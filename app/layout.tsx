@@ -44,39 +44,84 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       >
         {/* ══════════════════════════════════════════════════════════════
             GLOBAL FIXED ABSTRACT BACKDROP
-            Stays in place as content scrolls over it.
-            All glass panels throughout the page blur this backdrop,
-            making the frosted glass effect visible everywhere.
+            Visible through all glass panels as users scroll.
+            Uses: perspective grid + multi-scale scatter dots + amber orbs
         ══════════════════════════════════════════════════════════════ */}
         <div
           aria-hidden="true"
           style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "#07070F" }}
         >
-          {/* Dot grid — 1.5px dots at 18% opacity, 28px spacing.
-              Must be visible enough to create a clear frosted haze
-              pattern when blurred by glass panels above.            */}
+          {/* ── Perspective grid SVG — fading lines add spatial depth ── */}
+          <svg
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+            aria-hidden="true"
+          >
+            <defs>
+              {/* Horizontal line gradient — fades at edges */}
+              <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stopColor="rgba(255,255,255,0)" />
+                <stop offset="20%"  stopColor="rgba(255,255,255,0.06)" />
+                <stop offset="80%"  stopColor="rgba(255,255,255,0.06)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </linearGradient>
+              {/* Vertical line gradient — fades at edges */}
+              <linearGradient id="vg" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%"   stopColor="rgba(255,255,255,0)" />
+                <stop offset="20%"  stopColor="rgba(255,255,255,0.05)" />
+                <stop offset="80%"  stopColor="rgba(255,255,255,0.05)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </linearGradient>
+              {/* Amber diagonal gradient */}
+              <linearGradient id="ag" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%"   stopColor="rgba(247,147,26,0)" />
+                <stop offset="40%"  stopColor="rgba(247,147,26,0.05)" />
+                <stop offset="100%" stopColor="rgba(247,147,26,0)" />
+              </linearGradient>
+            </defs>
+
+            {/* Horizontal lines */}
+            {([10, 20, 30, 40, 50, 60, 70, 80, 90] as number[]).map((pct) => (
+              <line key={`h${pct}`} x1="0%" y1={`${pct}%`} x2="100%" y2={`${pct}%`}
+                stroke="url(#hg)" strokeWidth="1" />
+            ))}
+
+            {/* Vertical lines */}
+            {([10, 20, 30, 40, 50, 60, 70, 80, 90] as number[]).map((pct) => (
+              <line key={`v${pct}`} x1={`${pct}%`} y1="0%" x2={`${pct}%`} y2="100%"
+                stroke="url(#vg)" strokeWidth="1" />
+            ))}
+
+            {/* Diagonal accent lines — adds dynamism, Bitcoin-chart feeling */}
+            <line x1="0%" y1="100%" x2="60%" y2="0%"
+              stroke="url(#ag)" strokeWidth="1" />
+            <line x1="10%" y1="100%" x2="70%" y2="0%"
+              stroke="url(#ag)" strokeWidth="0.8" />
+            <line x1="55%" y1="100%" x2="100%" y2="30%"
+              stroke="url(#ag)" strokeWidth="0.7" />
+          </svg>
+
+          {/* ── Multi-scale scatter dots — NOT a uniform grid ──
+              Three staggered offsets create organic irregular pattern
+              that looks like a star field when blurred through glass   */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px)",
-              backgroundSize: "28px 28px",
+              backgroundImage: `
+                radial-gradient(circle, rgba(255,255,255,0.22) 1.5px, transparent 1.5px),
+                radial-gradient(circle, rgba(255,255,255,0.12) 1.0px, transparent 1.0px),
+                radial-gradient(circle, rgba(255,255,255,0.08) 0.7px, transparent 0.7px)
+              `,
+              backgroundSize: "160px 160px, 80px 80px, 40px 40px",
+              backgroundPosition: "0 0, 40px 40px, 20px 20px",
             }}
           />
 
-          {/* Primary amber orb — upper right quadrant */}
+          {/* ── Two amber orbs for color warmth ── */}
           <div className="bg-orb bg-orb-primary" />
-
-          {/* Secondary amber orb — mid left */}
           <div className="bg-orb bg-orb-secondary" />
 
-          {/* Blue accent orb — top right edge */}
-          <div className="bg-orb bg-orb-accent" />
-
-          {/* Bottom orb — for dashboard card / feed area */}
-          <div className="bg-orb bg-orb-bottom" />
-
-          {/* Subtle scanlines for sci-fi texture */}
+          {/* Subtle scanlines */}
           <div
             style={{
               position: "absolute",
@@ -86,7 +131,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             }}
           />
 
-          {/* Noise grain — adds material warmth */}
+          {/* Noise grain — material texture */}
           <div
             style={{
               position: "absolute",
@@ -98,7 +143,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           />
         </div>
 
-        {/* Page content sits above backdrop */}
+        {/* Page content */}
         <div className="relative" style={{ zIndex: 1 }}>
           <Nav />
           <main>{children}</main>

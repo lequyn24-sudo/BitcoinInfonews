@@ -342,12 +342,4 @@ body {
   animation: orb-drift-1 20s ease-in-out infinite reverse;
 }
 
-/* Dot grid — must be visible enough to create
-   a clear frosted-haze effect through blur(32px) */
-.bg-dot-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-}
+/* .bg-dot-grid removed — layout.tsx now uses multi-scale scatter particles */
