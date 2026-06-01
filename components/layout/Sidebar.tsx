@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, TrendUp } from "@phosphor-icons/react/dist/ssr";
-import { Card } from "@/components/ui/Card";
 import { formatPrice, formatPercent, formatLargeNumber } from "@/lib/utils";
 import type { PriceData } from "@/types";
 import { TRENDING_TOPICS, TOP_MOVERS } from "@/lib/api";
@@ -9,177 +8,204 @@ interface SidebarProps {
   priceData: PriceData;
 }
 
+/* Shared glass widget base */
+const widget = {
+  background: "rgba(10,10,12,0.65)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid rgba(255,255,255,0.06)",
+  borderRadius: "12px",
+  padding: "16px",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+};
+
+const sectionLabel = {
+  fontSize: "9px",
+  fontWeight: 500,
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.12em",
+  color: "#383838",
+  marginBottom: "14px",
+  display: "block",
+};
+
 export function Sidebar({ priceData }: SidebarProps) {
   const isPositive = priceData.change24h >= 0;
+  const priceColor = isPositive ? "#00C896" : "#FF4D4D";
 
   return (
-    <aside className="flex flex-col gap-4" aria-label="Sidebar">
-      {/* S1 — Live Bitcoin Price Widget */}
-      <div
-        className="rounded-[12px] p-[16px] border border-[#2A2A2A] bg-[#111111]"
-        style={{ borderLeft: "2px solid #F7931A" }}
-      >
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-white flex items-center gap-2">
-            <TrendUp size={16} className="text-[#F7931A]" />
-            Bitcoin
-          </p>
-          <span className="flex items-center gap-1 text-[11px] font-[500] uppercase tracking-[0.04em] text-[#00C896]">
-            <span className="w-[6px] h-[6px] rounded-full bg-[#00C896] pulse-dot" />
+    <aside className="flex flex-col gap-3" aria-label="Sidebar">
+
+      {/* S1 — Live BTC Price */}
+      <div style={{ ...widget, borderLeft: "2px solid rgba(247,147,26,0.35)" }}>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <TrendUp size={13} style={{ color: "#F7931A" }} />
+            <span style={{ ...sectionLabel, marginBottom: 0 }}>Bitcoin</span>
+          </div>
+          <span className="flex items-center gap-[5px]" style={{ fontSize: "9px", color: "#00C896", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <span className="w-[4px] h-[4px] rounded-full bg-[#00C896] pulse-dot" style={{ boxShadow: "0 0 5px rgba(0,200,150,0.5)" }} />
             Live
           </span>
         </div>
 
         <div className="flex items-baseline gap-3 mb-1">
           <p
-            className="text-[24px] font-[500] text-white leading-[1.2]"
-            style={{ fontFamily: "var(--font-mono)" }}
+            style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "22px", fontWeight: 500, color: "#fff", lineHeight: 1.1 }}
             aria-live="polite"
           >
             {formatPrice(priceData.price)}
           </p>
-          <p
-            className="text-[14px] font-[500]"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: isPositive ? "#00C896" : "#FF4D4D",
-            }}
-          >
+          <p style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "12px", fontWeight: 500, color: priceColor }}>
             {isPositive ? "▲" : "▼"} {formatPercent(priceData.change24h)}
           </p>
         </div>
 
-        {/* Sparkline placeholder */}
-        <div className="h-[40px] my-3 rounded-[4px] overflow-hidden">
-          <svg viewBox="0 0 200 40" className="w-full h-full" aria-hidden="true">
+        {/* Sparkline */}
+        <div style={{ height: "36px", marginBottom: "10px" }}>
+          <svg viewBox="0 0 200 36" style={{ width: "100%", height: "100%" }} aria-hidden="true">
+            <defs>
+              <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={priceColor} stopOpacity="0.25" />
+                <stop offset="100%" stopColor={priceColor} stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <polygon
+              points="0,30 28,24 57,18 85,22 114,10 142,7 171,4 200,2 200,36 0,36"
+              fill="url(#sg)"
+            />
             <polyline
-              points="0,35 28,28 57,20 85,25 114,12 142,8 171,5 200,3"
+              points="0,30 28,24 57,18 85,22 114,10 142,7 171,4 200,2"
               fill="none"
-              stroke={isPositive ? "#00C896" : "#FF4D4D"}
-              strokeWidth="2"
+              stroke={priceColor}
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
         </div>
 
-        <div className="flex justify-between text-[12px] text-[#A0A0A0]">
-          <span>24H High <span className="text-white" style={{ fontFamily: "var(--font-mono)" }}>{formatPrice(priceData.high24h)}</span></span>
-          <span>Low <span className="text-white" style={{ fontFamily: "var(--font-mono)" }}>{formatPrice(priceData.low24h)}</span></span>
+        <div className="flex justify-between">
+          <span style={{ fontSize: "10px", color: "#383838" }}>
+            H: <span style={{ fontFamily: "var(--font-jetbrains, monospace)", color: "#505050" }}>{formatPrice(priceData.high24h)}</span>
+          </span>
+          <span style={{ fontSize: "10px", color: "#383838" }}>
+            L: <span style={{ fontFamily: "var(--font-jetbrains, monospace)", color: "#505050" }}>{formatPrice(priceData.low24h)}</span>
+          </span>
         </div>
       </div>
 
       {/* S2 — Trending Topics */}
-      <Card hover={false}>
-        <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-3">
-          Trending Now
-        </p>
-        <ul className="space-y-0">
+      <div style={widget}>
+        <span style={sectionLabel}>Trending Now</span>
+        <ul>
           {TRENDING_TOPICS.map((topic) => (
             <li key={topic.rank}>
               <Link
-                href={`/bitcoin-news`}
-                className="flex items-center justify-between py-[10px] border-b border-[#2A2A2A] last:border-0 group"
+                href="/bitcoin-news"
+                className="flex items-center justify-between py-[10px] group"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
               >
                 <div className="flex items-center gap-3">
-                  <span
-                    className="text-[12px] font-[500] w-[20px] flex-shrink-0"
-                    style={{ fontFamily: "var(--font-mono)", color: "#A0A0A0" }}
-                  >
+                  <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", color: "#282828", width: "18px", textAlign: "right" }}>
                     {String(topic.rank).padStart(2, "0")}
                   </span>
-                  <span className="text-[14px] text-white group-hover:text-[#F7931A] transition-colors">
+                  <span className="group-hover:text-[#F7931A] transition-colors" style={{ fontSize: "13px", color: "#fff" }}>
                     {topic.title}
                   </span>
                 </div>
-                <ArrowRight size={14} className="text-[#A0A0A0] group-hover:text-[#F7931A] transition-colors flex-shrink-0" />
+                <ArrowRight size={11} className="text-[#282828] group-hover:text-[#F7931A] transition-colors" />
               </Link>
             </li>
           ))}
         </ul>
-      </Card>
+      </div>
 
-      {/* S3 — Newsletter Signup */}
-      <div
-        className="rounded-[12px] p-[16px] border border-[#2A2A2A]"
-        style={{ background: "rgba(247,147,26,0.05)", borderColor: "rgba(247,147,26,0.2)" }}
-      >
-        <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-2">
-          Stay Informed
-        </p>
-        <p className="text-[13px] text-white mb-4">
+      {/* S3 — Newsletter */}
+      <div style={{
+        ...widget,
+        background: "rgba(247,147,26,0.04)",
+        border: "1px solid rgba(247,147,26,0.12)",
+        boxShadow: "0 0 30px rgba(247,147,26,0.05), 0 4px 20px rgba(0,0,0,0.25)",
+      }}>
+        <span style={sectionLabel}>Stay Informed</span>
+        <p style={{ fontSize: "13px", color: "#fff", marginBottom: "12px", lineHeight: 1.5 }}>
           Weekly Bitcoin digest, no noise.
         </p>
         <input
           type="email"
           placeholder="your@email.com"
-          className="w-full h-[44px] bg-[#1A1A1A] border border-[#2A2A2A] rounded-[8px] px-[16px] text-[14px] text-white placeholder:text-[#666] outline-none focus:border-[#F7931A] mb-3"
+          className="w-full mb-3 outline-none transition-all duration-200"
+          style={{
+            height: "40px",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.07)",
+            borderRadius: "6px",
+            padding: "0 14px",
+            fontSize: "13px",
+            color: "#fff",
+          }}
         />
-        <button className="w-full h-[44px] bg-[#F7931A] text-[#0A0A0A] text-[13px] font-[600] uppercase tracking-[0.04em] rounded-[8px] hover:bg-[#e8841a] transition-colors">
+        <button
+          className="w-full transition-colors duration-200 hover:bg-[#e8841a]"
+          style={{
+            height: "40px",
+            background: "#F7931A",
+            color: "#060608",
+            fontSize: "11px",
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            borderRadius: "4px",
+            border: "none",
+          }}
+        >
           Subscribe →
         </button>
       </div>
 
       {/* S4 — Top Movers */}
-      <Card hover={false}>
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0]">
-            Top Movers
-          </p>
-          <span className="text-[11px] uppercase text-[#A0A0A0]">24H</span>
+      <div style={widget}>
+        <div className="flex items-center justify-between mb-4">
+          <span style={{ ...sectionLabel, marginBottom: 0 }}>Top Movers</span>
+          <span style={{ fontSize: "9px", color: "#383838", textTransform: "uppercase", letterSpacing: "0.08em" }}>24H</span>
         </div>
-        <ul className="space-y-0">
-          {TOP_MOVERS.map((mover) => (
+        <ul>
+          {TOP_MOVERS.map((m) => (
             <li
-              key={mover.symbol}
-              className="flex items-center justify-between py-[10px] border-b border-[#2A2A2A] last:border-0"
+              key={m.symbol}
+              className="flex items-center justify-between py-[10px]"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
             >
               <div className="flex items-center gap-2">
-                <span
-                  className="text-[13px] font-[500] text-white w-[32px]"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  {mover.symbol}
+                <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "12px", fontWeight: 500, color: "#fff", width: "32px" }}>
+                  {m.symbol}
                 </span>
-                <span className="text-[12px] text-[#A0A0A0]">{mover.name}</span>
+                <span style={{ fontSize: "11px", color: "#383838" }}>{m.name}</span>
               </div>
               <div className="text-right">
-                <p
-                  className="text-[13px] font-[400] text-white"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  {formatPrice(mover.price)}
+                <p style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "12px", color: "#fff" }}>
+                  {formatPrice(m.price)}
                 </p>
-                <p
-                  className="text-[12px]"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: mover.change24h >= 0 ? "#00C896" : "#FF4D4D",
-                  }}
-                >
-                  {formatPercent(mover.change24h)}
+                <p style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "11px", color: m.change24h >= 0 ? "#00C896" : "#FF4D4D" }}>
+                  {m.change24h >= 0 ? "+" : ""}{m.change24h.toFixed(2)}%
                 </p>
               </div>
             </li>
           ))}
         </ul>
-      </Card>
+      </div>
 
-      {/* S5 — Volume info */}
-      <div className="rounded-[12px] p-[16px] border-t-[2px] border-t-[#3B9EFF] border border-[#2A2A2A] bg-[#1A1A1A]">
+      {/* S5 — Volume */}
+      <div style={{ ...widget, borderTop: "2px solid rgba(59,158,255,0.20)", borderRadius: "0 0 12px 12px" }}>
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0]">
-            Market Volume
-          </p>
-          <span className="text-[11px] text-[#3B9EFF] uppercase font-[500]">PR</span>
+          <span style={{ ...sectionLabel, marginBottom: 0 }}>Market Volume</span>
+          <span style={{ fontSize: "9px", color: "#3B9EFF", textTransform: "uppercase", letterSpacing: "0.08em" }}>24H</span>
         </div>
-        <p
-          className="text-[20px] font-[500] text-white"
-          style={{ fontFamily: "var(--font-mono)" }}
-        >
+        <p style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "18px", fontWeight: 500, color: "#fff" }}>
           {formatLargeNumber(priceData.volume24h)}
         </p>
-        <p className="text-[12px] text-[#A0A0A0] mt-1">24h trading volume</p>
+        <p style={{ fontSize: "10px", color: "#383838", marginTop: "4px" }}>Global trading volume</p>
       </div>
     </aside>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Plus, TrendUp, ChartBar, Coins, CaretDown, Play } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, Plus, TrendUp, ChartBar, Coins, CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { StatusPill } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { formatPrice, formatPercent, formatLargeNumber } from "@/lib/utils";
@@ -12,232 +12,276 @@ interface HeroProps {
 
 export function Hero({ priceData, marketStatus }: HeroProps) {
   const isPositive = priceData.change24h >= 0;
+  const priceColor = isPositive ? "#00C896" : "#FF4D4D";
 
   return (
     <section
-      className="relative min-h-[640px] max-h-[860px] h-[90vh] lg:h-screen w-full overflow-visible"
-      aria-label="Hero section"
+      className="relative w-full overflow-visible"
+      style={{ height: "100svh", minHeight: "640px", maxHeight: "900px" }}
+      aria-label="Hero"
     >
-      {/* ── Background: dark atmospheric server/tech image ── */}
+      {/* Base void */}
+      <div className="absolute inset-0 bg-[#060608]" />
+
+      {/* Cinematic background — dark atmospheric Bitcoin image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=1920&auto=format&fit=crop&q=80')",
+            "url('https://images.unsplash.com/photo-1639762681057-408e52192e55?w=1920&auto=format&fit=crop&q=85')",
         }}
       />
 
-      {/* Primary left-to-right overlay — keeps left column nearly black */}
+      {/* Multi-pass atmospheric overlays */}
+      {/* Primary: heavy left, transparent center-right */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.40) 45%, rgba(10,10,10,0.65) 100%)",
+            "linear-gradient(110deg, rgba(6,6,8,0.97) 0%, rgba(6,6,8,0.80) 36%, rgba(6,6,8,0.28) 62%, rgba(6,6,8,0.72) 100%)",
         }}
       />
-
-      {/* Radial edge vignette — darkens all four edges */}
+      {/* Top + bottom darkness */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(6,6,8,0.80) 0%, transparent 25%, transparent 72%, rgba(6,6,8,0.95) 100%)",
+        }}
+      />
+      {/* Radial edge vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 20%, rgba(10,10,10,0.70) 100%)",
+            "radial-gradient(ellipse at 55% 48%, transparent 22%, rgba(6,6,8,0.70) 100%)",
         }}
       />
-
-      {/* Aurora amber glow — centered on hero image area */}
+      {/* Soft amber volumetric light — center glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 60% 50%, rgba(247,147,26,0.08) 0%, transparent 50%)",
+            "radial-gradient(ellipse at 60% 52%, rgba(247,147,26,0.07) 0%, transparent 48%)",
         }}
       />
 
-      {/* Content */}
+      {/* ─── Content: 3-column grid layout (unchanged structure) ─── */}
       <div className="relative z-[1] max-w-[1200px] mx-auto px-4 lg:px-6 h-full flex items-center pt-[56px] lg:pt-[64px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 w-full items-center">
 
-          {/* ── Left column — col 1-4 ── */}
-          <div className="lg:col-span-4 flex flex-col gap-5">
+          {/* ── Col 1–4: Left content ── */}
+          <div className="lg:col-span-4 flex flex-col gap-[22px]">
 
             {/* Status badge */}
             <div className="hero-enter-1">
               <StatusPill status={marketStatus} />
             </div>
 
-            {/* Display Headline */}
+            {/* Display headline — NOVA scale, tight tracking */}
             <div className="hero-enter-2">
-              <h1 className="font-[800] leading-[1.05] tracking-[-0.03em] uppercase">
-                <span className="block text-white text-[28px] sm:text-[32px] md:text-[40px] lg:text-[56px] xl:text-[64px]">
+              <h1 className="font-[800] leading-[1.00] tracking-[-0.04em] uppercase">
+                <span
+                  className="block text-white"
+                  style={{ fontSize: "clamp(32px, 5.2vw, 68px)" }}
+                >
                   UNDERSTAND.
                 </span>
-                <span className="block text-white text-[28px] sm:text-[32px] md:text-[40px] lg:text-[56px] xl:text-[64px]">
+                <span
+                  className="block text-white"
+                  style={{ fontSize: "clamp(32px, 5.2vw, 68px)" }}
+                >
                   VERIFY.
                 </span>
                 <span
-                  className="block text-[28px] sm:text-[32px] md:text-[40px] lg:text-[56px] xl:text-[64px]"
-                  style={{ color: "#F7931A" }}
+                  className="block"
+                  style={{ fontSize: "clamp(32px, 5.2vw, 68px)", color: "#F7931A" }}
                 >
                   INVEST.
                 </span>
               </h1>
             </div>
 
-            {/* Subheadline */}
-            <p className="text-[#A0A0A0] text-[15px] lg:text-[17px] font-[400] leading-[1.65] max-w-[380px] hero-enter-3">
-              Bitcoin-first news, market analysis, and tools for investors who value signal over hype.
+            {/* Subheadline — muted, relaxed */}
+            <p
+              className="text-[#666] leading-[1.70] hero-enter-3"
+              style={{ fontSize: "clamp(13px, 1.1vw, 16px)", maxWidth: "360px" }}
+            >
+              Bitcoin-first intelligence — signal over noise, verified before published.
             </p>
 
-            {/* CTA buttons — sharp 4px radius matching NOVA reference */}
-            <div className="flex items-center gap-3 hero-enter-4">
-              {/* Play circle — NOVA reference detail */}
-              <button
-                aria-label="Play"
-                className="hidden sm:flex w-[44px] h-[44px] rounded-full border border-[rgba(255,255,255,0.25)] items-center justify-center text-white hover:border-[rgba(255,255,255,0.5)] transition-all flex-shrink-0"
-              >
-                <Play size={16} weight="fill" />
-              </button>
+            {/* CTAs — NOVA: sharp 4px radius */}
+            <div className="flex flex-col sm:flex-row gap-3 hero-enter-4">
+              <Link href="/bitcoin-news">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto !rounded-[4px]">
+                  Read Top Stories <ArrowRight size={15} weight="bold" />
+                </Button>
+              </Link>
+              <Link href="/bitcoin-news">
+                <Button variant="ghost" size="lg" className="w-full sm:w-auto !rounded-[4px]">
+                  Live Prices <Plus size={15} weight="bold" />
+                </Button>
+              </Link>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 flex-1">
-                <Link href="/bitcoin-news" className="w-full sm:w-auto">
-                  <Button variant="primary" size="lg" className="w-full sm:w-auto !rounded-[4px]">
-                    Read Top Stories <ArrowRight size={16} weight="bold" />
-                  </Button>
-                </Link>
-                <Link href="/bitcoin-news" className="w-full sm:w-auto">
-                  <Button variant="ghost" size="lg" className="w-full sm:w-auto !rounded-[4px]">
-                    Live Prices <Plus size={16} weight="bold" />
-                  </Button>
-                </Link>
+            {/* Left-edge scroll indicator */}
+            <div className="hidden lg:flex items-center gap-3 mt-2 hero-enter-5">
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-[1px] h-[32px] bg-gradient-to-b from-[rgba(255,255,255,0.10)] to-transparent" />
+                <CaretDown size={10} className="text-[#333] bounce-down" />
               </div>
+              <span className="text-[9px] uppercase tracking-[0.14em] text-[#333]">
+                Scroll
+              </span>
             </div>
           </div>
 
-          {/* ── Center — col 5-9 — floating glass card ── */}
+          {/* ── Col 5–9: Center — floating glass card ── */}
           <div className="hidden md:block lg:col-span-5 relative h-full min-h-[320px]">
+            {/* Floating glass card — glassmorphism, NOVA-level frosting */}
             <div
-              className="absolute bottom-[40px] right-[8px] z-[40] rounded-[12px] p-[16px_20px] min-w-[210px] hero-enter-6"
+              className="absolute bottom-[48px] right-0 z-[40] floating hero-enter-6"
               style={{
-                background: "rgba(17,17,17,0.80)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(10,10,12,0.72)",
+                backdropFilter: "blur(28px)",
+                WebkitBackdropFilter: "blur(28px)",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: "14px",
+                padding: "20px 24px",
+                minWidth: "220px",
+                boxShadow: "0 8px 40px rgba(0,0,0,0.40), 0 0 0 1px rgba(255,255,255,0.04) inset",
               }}
             >
-              <p className="text-[11px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-1">
-                BTC Price Target
+              <p
+                className="mb-1"
+                style={{
+                  fontSize: "9px",
+                  fontWeight: 500,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "#404040",
+                }}
+              >
+                BTC / USD · Target
               </p>
               <p
-                className="text-[28px] font-[500] leading-[1.2] text-white"
-                style={{ fontFamily: "var(--font-jetbrains, monospace)" }}
+                className="text-white"
+                style={{
+                  fontFamily: "var(--font-jetbrains, monospace)",
+                  fontSize: "30px",
+                  fontWeight: 500,
+                  lineHeight: 1.1,
+                }}
               >
                 $100,000
               </p>
+              <p
+                className="mt-1"
+                style={{
+                  fontFamily: "var(--font-jetbrains, monospace)",
+                  fontSize: "12px",
+                  color: "#00C896",
+                }}
+              >
+                ▲ Accumulation zone
+              </p>
             </div>
           </div>
 
-          {/* ── Right column — col 10-12 — Live Market Stats ── */}
-          {/* Fix 3: dash separators instead of border lines */}
+          {/* ── Col 10–12: Right — live market stats ── */}
           <div className="hidden lg:flex lg:col-span-3 flex-col">
-
-            {/* BTC Price tile */}
-            <div className="py-[16px]">
-              <TrendUp size={18} className="text-[#A0A0A0] mb-2" />
-              <p
-                className="text-[28px] font-[500] text-white leading-[1.2]"
-                style={{ fontFamily: "var(--font-jetbrains, monospace)" }}
-                aria-live="polite"
-              >
-                {formatPrice(priceData.price)}
-              </p>
-              <p
-                className="text-[13px] font-[500] mt-[2px]"
-                style={{
-                  fontFamily: "var(--font-jetbrains, monospace)",
-                  color: isPositive ? "#00C896" : "#FF4D4D",
-                }}
-              >
-                {isPositive ? "▲" : "▼"} {formatPercent(priceData.change24h)}
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0] mt-1">
-                BTC Price
-              </p>
-            </div>
-
-            {/* Dash separator — NOVA reference pattern */}
-            <div className="text-[#2A2A2A] text-[14px] leading-none select-none pl-[2px]">–</div>
-
-            {/* Volume tile */}
-            <div className="py-[16px]">
-              <ChartBar size={18} className="text-[#A0A0A0] mb-2" />
-              <p
-                className="text-[24px] font-[500] text-white leading-[1.2]"
-                style={{ fontFamily: "var(--font-jetbrains, monospace)" }}
-                aria-live="polite"
-              >
-                {formatLargeNumber(priceData.volume24h)}
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0] mt-1">
-                24H Volume
-              </p>
-            </div>
-
-            {/* Dash separator */}
-            <div className="text-[#2A2A2A] text-[14px] leading-none select-none pl-[2px]">–</div>
-
-            {/* Dominance tile */}
-            <div className="py-[16px]">
-              <Coins size={18} className="text-[#A0A0A0] mb-2" />
-              <p
-                className="text-[24px] font-[500] text-white leading-[1.2]"
-                style={{ fontFamily: "var(--font-jetbrains, monospace)" }}
-                aria-live="polite"
-              >
-                {priceData.dominance.toFixed(1)}%
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0] mt-1">
-                BTC Dominance
-              </p>
-            </div>
+            {[
+              {
+                icon: <TrendUp size={16} className="text-[#333]" />,
+                value: formatPrice(priceData.price),
+                sub: formatPercent(priceData.change24h),
+                subColor: priceColor,
+                label: "BTC Price",
+              },
+              {
+                icon: <ChartBar size={16} className="text-[#333]" />,
+                value: formatLargeNumber(priceData.volume24h),
+                label: "24H Volume",
+              },
+              {
+                icon: <Coins size={16} className="text-[#333]" />,
+                value: `${priceData.dominance.toFixed(1)}%`,
+                label: "Dominance",
+              },
+            ].map((stat, i) => (
+              <div key={stat.label}>
+                <div className="py-[18px]">
+                  <div className="mb-2">{stat.icon}</div>
+                  <p
+                    className="text-white leading-none"
+                    style={{
+                      fontFamily: "var(--font-jetbrains, monospace)",
+                      fontSize: i === 0 ? "26px" : "22px",
+                      fontWeight: 500,
+                    }}
+                    aria-live="polite"
+                  >
+                    {stat.value}
+                  </p>
+                  {stat.sub && (
+                    <p
+                      className="mt-1"
+                      style={{
+                        fontFamily: "var(--font-jetbrains, monospace)",
+                        fontSize: "12px",
+                        fontWeight: 500,
+                        color: stat.subColor,
+                      }}
+                    >
+                      {stat.sub}
+                    </p>
+                  )}
+                  <p
+                    className="mt-[6px]"
+                    style={{
+                      fontSize: "9px",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.10em",
+                      color: "#383838",
+                    }}
+                  >
+                    {stat.label}
+                  </p>
+                </div>
+                {i < 2 && (
+                  <div className="text-[#1C1C1C] text-[13px] leading-none select-none">
+                    –
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* ── Left-edge vertical scroll indicator ── */}
-      <div
-        className="absolute hidden md:flex flex-col items-center gap-2 z-[50]"
-        style={{ left: "24px", bottom: "72px" }}
-      >
-        <div className="w-[6px] h-[6px] rounded-full border border-[#333] bg-transparent" />
-        <div className="w-[1px] h-[56px] bg-[#2A2A2A]" />
-        <CaretDown size={12} className="text-[#555] bounce-down" />
-      </div>
-
-      {/* ── Mobile stats strip — bottom ── */}
-      <div className="absolute bottom-0 left-0 right-0 lg:hidden border-t border-[#2A2A2A] bg-[rgba(10,10,10,0.92)] backdrop-blur-[8px]">
-        <div className="flex items-center justify-around px-4 py-3 overflow-x-auto gap-4">
+      {/* Mobile stats strip */}
+      <div className="absolute bottom-0 left-0 right-0 lg:hidden border-t border-[rgba(255,255,255,0.04)] bg-[rgba(6,6,8,0.90)] backdrop-blur-[16px]">
+        <div className="flex items-center justify-around px-4 py-3 gap-4">
           {[
-            { value: formatPrice(priceData.price), label: "BTC" },
-            {
-              value: formatPercent(priceData.change24h),
-              label: "24H",
-              color: isPositive ? "#00C896" : "#FF4D4D",
-            },
-            { value: formatLargeNumber(priceData.volume24h), label: "Vol" },
-            { value: `${priceData.dominance.toFixed(1)}%`, label: "Dom" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center flex-shrink-0">
+            { v: formatPrice(priceData.price), l: "BTC" },
+            { v: formatPercent(priceData.change24h), l: "24H", c: priceColor },
+            { v: formatLargeNumber(priceData.volume24h), l: "Vol" },
+            { v: `${priceData.dominance.toFixed(1)}%`, l: "Dom" },
+          ].map((s) => (
+            <div key={s.l} className="text-center">
               <p
-                className="text-[13px] font-[500]"
                 style={{
                   fontFamily: "var(--font-jetbrains, monospace)",
-                  color: stat.color ?? "#FFFFFF",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  color: s.c ?? "#FFFFFF",
                 }}
               >
-                {stat.value}
+                {s.v}
               </p>
-              <p className="text-[10px] uppercase text-[#A0A0A0]">{stat.label}</p>
+              <p style={{ fontSize: "9px", textTransform: "uppercase", letterSpacing: "0.08em", color: "#404040", marginTop: "2px" }}>
+                {s.l}
+              </p>
             </div>
           ))}
         </div>

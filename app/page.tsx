@@ -38,7 +38,7 @@ export default async function HomePage() {
       <Hero priceData={priceData} marketStatus={marketStatus} />
 
       {/* Zone 3: Dashboard Cards — overlaps hero by 40px */}
-      <div className="bg-[#0A0A0A] pb-0 overflow-visible">
+      <div className="bg-[#060608] pb-0 overflow-visible">
         <DashboardCards
           featuredArticle={featuredArticle}
           breakingArticle={breakingCard}
@@ -48,7 +48,7 @@ export default async function HomePage() {
       </div>
 
       {/* Zone 4: Main Content Grid */}
-      <section className="bg-[#0A0A0A] mt-12 pb-16">
+      <section className="bg-[#060608] mt-16 pb-20">
         <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 

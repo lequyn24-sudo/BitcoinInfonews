@@ -36,12 +36,12 @@
 }
 
 html {
-  background-color: #0A0A0A;
+  background-color: #060608;
   color: #FFFFFF;
 }
 
 body {
-  background-color: #0A0A0A;
+  background-color: #060608;
   color: #FFFFFF;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -162,9 +162,57 @@ body {
 }
 
 /* Staggered entrance animation for hero */
-.hero-enter-1 { animation: fade-in-up 400ms ease-out 0ms both; }
-.hero-enter-2 { animation: fade-in-up 400ms ease-out 100ms both; }
-.hero-enter-3 { animation: fade-in-up 400ms ease-out 200ms both; }
-.hero-enter-4 { animation: fade-in-up 400ms ease-out 350ms both; }
-.hero-enter-5 { animation: fade-in-up 400ms ease-out 450ms both; }
-.hero-enter-6 { animation: fade-in 400ms ease-out 300ms both; }
+.hero-enter-1 { animation: fade-in-up 500ms ease-out 0ms both; }
+.hero-enter-2 { animation: fade-in-up 500ms ease-out 120ms both; }
+.hero-enter-3 { animation: fade-in-up 500ms ease-out 240ms both; }
+.hero-enter-4 { animation: fade-in-up 500ms ease-out 380ms both; }
+.hero-enter-5 { animation: fade-in-up 500ms ease-out 500ms both; }
+.hero-enter-6 { animation: fade-in 600ms ease-out 350ms both; }
+
+/* Glass panel — base frosted surface */
+.glass {
+  background: rgba(12, 12, 14, 0.60);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Amber volumetric glow */
+.glow-amber {
+  box-shadow:
+    0 0 60px rgba(247, 147, 26, 0.12),
+    0 0 120px rgba(247, 147, 26, 0.06);
+}
+
+/* Subtle text glow for live data */
+.text-glow-green {
+  text-shadow: 0 0 20px rgba(0, 200, 150, 0.4);
+}
+.text-glow-red {
+  text-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+}
+
+/* Signal feed row hover */
+.signal-row {
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.signal-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* Oversized ghost type — focal layer */
+.ghost-type {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Floating animation for glass cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.floating {
+  animation: float 6s ease-in-out infinite;
+}

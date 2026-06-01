@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
-import type { Article, ArticleCategory } from "@/types";
+import type { Article } from "@/types";
 
 interface ArticleFeedProps {
   articles: Article[];
@@ -12,29 +12,44 @@ interface ArticleFeedProps {
   sectionHref?: string;
 }
 
+/* NOVA glass base */
+const glassCard = {
+  background: "rgba(10,10,12,0.65)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid rgba(255,255,255,0.06)",
+  borderRadius: "12px",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.28)",
+};
+
+/* Top story — cinematic, large image, glass text overlay */
 function TopStoryCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/${article.slug}`}
-      className="group block bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] overflow-hidden hover:border-[rgba(247,147,26,0.4)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200"
+      className="group block overflow-hidden transition-all duration-300 hover:shadow-[0_0_48px_rgba(247,147,26,0.09),0_8px_32px_rgba(0,0,0,0.50)]"
+      style={{ ...glassCard, position: "relative" }}
     >
-      {/* Image — minimum height enforced for visual weight */}
-      <div className="relative w-full aspect-[16/9] min-h-[240px] bg-[#242424]">
+      {/* Full-bleed image — minimum height for visual weight */}
+      <div className="relative w-full min-h-[260px] bg-[#0A0A0C]" style={{ aspectRatio: "16/9" }}>
         <Image
           src={article.imageUrl}
           alt={article.title}
           fill
-          sizes="(max-width: 768px) 100vw, 800px"
-          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 800px"
+          className="object-cover opacity-80 group-hover:opacity-95 transition-opacity duration-500"
           priority
         />
+        {/* Deep bottom gradient for text legibility */}
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, transparent 35%, rgba(10,10,10,0.92) 100%)",
+            background:
+              "linear-gradient(to bottom, rgba(10,10,12,0.05) 0%, rgba(10,10,12,0.55) 45%, rgba(10,10,12,0.96) 100%)",
           }}
         />
-        {/* Badge — absolute positioned inside image, z-indexed */}
+
+        {/* Badge — absolute top-left inside image */}
         <div className="absolute top-4 left-4 z-[2]">
           {article.isBreaking && <Badge variant="breaking">Breaking</Badge>}
           {article.isSponsored && <Badge variant="sponsored">Sponsored</Badge>}
@@ -42,50 +57,72 @@ function TopStoryCard({ article }: { article: Article }) {
             <Badge variant="category">{article.categoryLabel}</Badge>
           )}
         </div>
+
+        {/* Date — top right */}
+        <div className="absolute top-4 right-4 z-[2]">
+          <span style={{ fontSize: "11px", color: "rgba(255,255,255,0.35)" }}>
+            {formatDate(article.date)}
+          </span>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <p className="text-[24px] font-[700] text-white leading-[1.3] line-clamp-2 group-hover:text-[#F7931A] transition-colors mb-2">
+      {/* Text panel — lives below the image, on the glass surface */}
+      <div className="p-5 pt-4">
+        <h2
+          className="font-[700] text-white leading-[1.25] tracking-[-0.02em] line-clamp-2 group-hover:text-[#F7931A] transition-colors duration-200 mb-2"
+          style={{ fontSize: "clamp(18px, 2vw, 24px)" }}
+        >
           {article.title}
-        </p>
-        <p className="text-[16px] text-[#A0A0A0] leading-[1.6] line-clamp-2 mb-3">
+        </h2>
+        <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.65" }} className="line-clamp-2 mb-3">
           {article.excerpt}
         </p>
-        <div className="flex items-center gap-2 text-[13px] text-[#A0A0A0]">
-          <span>{article.author}</span>
-          <span>·</span>
-          <span>{formatDate(article.date)}</span>
-          <span>·</span>
-          <span>{article.readTime} min read</span>
-          <ArrowUpRight size={14} className="ml-auto text-[#A0A0A0] group-hover:text-[#F7931A] transition-colors" />
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2" style={{ fontSize: "12px", color: "#404040" }}>
+            <span>{article.author}</span>
+            <span style={{ color: "#222" }}>·</span>
+            <span>{article.readTime} min read</span>
+          </div>
+          <ArrowUpRight
+            size={15}
+            className="text-[#333] group-hover:text-[#F7931A] transition-colors"
+          />
         </div>
       </div>
     </Link>
   );
 }
 
+/* Secondary 2-up card */
 function SecondaryCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/${article.slug}`}
-      className="group block bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] overflow-hidden hover:border-[rgba(247,147,26,0.4)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200"
+      className="group block overflow-hidden transition-all duration-300 hover:shadow-[0_0_32px_rgba(247,147,26,0.08),0_4px_20px_rgba(0,0,0,0.35)]"
+      style={glassCard}
     >
-      <div className="relative w-full aspect-[16/9] bg-[#242424]">
+      <div className="relative w-full bg-[#0A0A0C]" style={{ aspectRatio: "16/9" }}>
         <Image
           src={article.imageUrl}
           alt={article.title}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
-          className="object-cover"
+          className="object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, transparent 30%, rgba(10,10,12,0.90) 100%)" }}
         />
       </div>
-      <div className="p-[12px]">
+      <div className="p-4">
         <Badge variant="category" className="mb-2">{article.categoryLabel}</Badge>
-        <p className="text-[16px] font-[600] text-white leading-[1.4] line-clamp-2 group-hover:text-[#F7931A] transition-colors">
+        <p
+          className="font-[600] text-white leading-[1.35] line-clamp-2 group-hover:text-[#F7931A] transition-colors duration-200"
+          style={{ fontSize: "15px" }}
+        >
           {article.title}
         </p>
-        <p className="text-[12px] text-[#A0A0A0] mt-2">
+        <p style={{ fontSize: "11px", color: "#404040", marginTop: "8px" }}>
           {article.author} · {formatDate(article.date)}
         </p>
       </div>
@@ -93,19 +130,20 @@ function SecondaryCard({ article }: { article: Article }) {
   );
 }
 
+/* Compact list row */
 function CompactCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/${article.slug}`}
-      className="group flex gap-3 py-[12px] border-b border-[#2A2A2A] last:border-0 hover:opacity-80 transition-opacity"
+      className="group flex gap-4 py-4 border-b border-[rgba(255,255,255,0.04)] last:border-0 transition-colors duration-200 hover:bg-[rgba(255,255,255,0.02)] rounded-[8px] px-2 -mx-2"
     >
-      <div className="relative w-[80px] h-[80px] flex-shrink-0 rounded-[8px] overflow-hidden bg-[#242424]">
+      <div className="relative w-[80px] h-[56px] flex-shrink-0 rounded-[6px] overflow-hidden bg-[#0A0A0C]">
         <Image
           src={article.imageUrl}
           alt={article.title}
           fill
           sizes="80px"
-          className="object-cover"
+          className="object-cover opacity-70 group-hover:opacity-85 transition-opacity"
         />
       </div>
       <div className="flex-1 min-w-0">
@@ -116,10 +154,13 @@ function CompactCard({ article }: { article: Article }) {
             <Badge variant="category">{article.categoryLabel}</Badge>
           )}
         </div>
-        <p className="text-[14px] font-[500] text-white leading-[1.4] line-clamp-2 group-hover:text-[#F7931A] transition-colors">
+        <p
+          className="font-[500] text-white leading-[1.35] line-clamp-2 group-hover:text-[#F7931A] transition-colors duration-200"
+          style={{ fontSize: "13px" }}
+        >
           {article.title}
         </p>
-        <p className="text-[12px] text-[#A0A0A0] mt-1">
+        <p style={{ fontSize: "11px", color: "#383838", marginTop: "4px" }}>
           {article.author} · {formatDate(article.date)}
         </p>
       </div>
@@ -127,30 +168,35 @@ function CompactCard({ article }: { article: Article }) {
   );
 }
 
+/* Sponsored card */
 function SponsoredCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/${article.slug}`}
-      className="group block bg-[#1A1A1A] border border-[#2A2A2A] border-t-[2px] border-t-[#FFB800] rounded-[12px] overflow-hidden hover:border-[rgba(247,147,26,0.4)] transition-all duration-200"
+      className="group block overflow-hidden transition-all duration-300"
+      style={{
+        ...glassCard,
+        borderTop: "2px solid rgba(255,184,0,0.25)",
+        borderRadius: "0 0 12px 12px",
+      }}
     >
       <div className="p-4">
         <div className="flex items-center justify-between mb-3">
           <Badge variant="sponsored">▲ Sponsored</Badge>
-          <span className="text-[11px] text-[#A0A0A0]">SPONSOR</span>
         </div>
-        <div className="relative w-full aspect-[16/9] rounded-[8px] overflow-hidden bg-[#242424] mb-3">
+        <div className="relative w-full rounded-[8px] overflow-hidden bg-[#0A0A0C] mb-3" style={{ aspectRatio: "16/9" }}>
           <Image
             src={article.imageUrl}
             alt={article.title}
             fill
-            sizes="(max-width: 768px) 100vw, 800px"
-            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 800px"
+            className="object-cover opacity-70"
           />
         </div>
-        <p className="text-[16px] font-[600] text-white line-clamp-2 mb-2">
+        <p className="font-[600] text-white line-clamp-2 mb-2" style={{ fontSize: "14px" }}>
           {article.title}
         </p>
-        <p className="text-[11px] text-[#A0A0A0] italic">
+        <p style={{ fontSize: "10px", color: "#444", fontStyle: "italic" }}>
           This is sponsored content.
         </p>
       </div>
@@ -167,7 +213,7 @@ export function ArticleFeed({
   if (!articles.length) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <p className="text-[16px] text-[#A0A0A0]">No articles found.</p>
+        <p style={{ fontSize: "14px", color: "#404040" }}>No articles found.</p>
       </div>
     );
   }
@@ -178,18 +224,22 @@ export function ArticleFeed({
   const sponsored = articles.filter((a) => a.isSponsored);
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* Section header */}
+    <div className="flex flex-col gap-8">
+      {/* Section header — NOVA minimal label */}
       {showSection && (
-        <div className="flex items-center justify-between border-b border-[#2A2A2A] pb-3">
-          <p className="text-[13px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0]">
-            {sectionTitle}
-          </p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#383838" }}>
+              {sectionTitle}
+            </span>
+            <div className="w-[32px] h-[1px]" style={{ background: "rgba(255,255,255,0.06)" }} />
+          </div>
           <Link
             href={sectionHref}
-            className="flex items-center gap-1 text-[12px] text-[#F7931A] hover:underline"
+            className="flex items-center gap-1 hover:text-[#F7931A] transition-colors"
+            style={{ fontSize: "11px", color: "#383838", textTransform: "uppercase", letterSpacing: "0.08em" }}
           >
-            View All <ArrowRight size={12} />
+            All <ArrowRight size={11} />
           </Link>
         </div>
       )}
@@ -200,8 +250,8 @@ export function ArticleFeed({
       {/* Secondary 2-up grid */}
       {secondary.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {secondary.slice(0, 2).map((article) => (
-            <SecondaryCard key={article.slug} article={article} />
+          {secondary.slice(0, 2).map((a) => (
+            <SecondaryCard key={a.slug} article={a} />
           ))}
         </div>
       )}
@@ -209,29 +259,33 @@ export function ArticleFeed({
       {/* Compact list */}
       {compact.length > 0 && (
         <div>
-          {compact.map((article) => (
-            <CompactCard key={article.slug} article={article} />
+          {compact.map((a) => (
+            <CompactCard key={a.slug} article={a} />
           ))}
         </div>
       )}
 
       {/* Sponsored */}
       {sponsored.length > 0 && (
-        <div className="mt-2">
-          <div className="flex items-center justify-between border-b border-[#2A2A2A] pb-3 mb-4">
-            <p className="text-[13px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0]">
-              Sponsored Content
-            </p>
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#383838" }}>
+              Sponsored
+            </span>
+            <div className="flex-1 h-[1px]" style={{ background: "rgba(255,255,255,0.04)" }} />
           </div>
-          {sponsored.map((article) => (
-            <SponsoredCard key={article.slug} article={article} />
+          {sponsored.map((a) => (
+            <SponsoredCard key={a.slug} article={a} />
           ))}
         </div>
       )}
 
-      {/* Load more */}
-      <button className="w-full h-[48px] border border-[#2A2A2A] rounded-[8px] text-[13px] font-[500] uppercase tracking-[0.04em] text-[#A0A0A0] hover:border-[rgba(247,147,26,0.4)] hover:bg-[rgba(247,147,26,0.04)] hover:text-white transition-all duration-200">
-        Load More Stories
+      {/* Load more — minimal */}
+      <button
+        className="w-full py-4 rounded-[6px] transition-all duration-200 text-[#383838] hover:text-[#A0A0A0] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.10)]"
+        style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.10em" }}
+      >
+        Load More
       </button>
     </div>
   );

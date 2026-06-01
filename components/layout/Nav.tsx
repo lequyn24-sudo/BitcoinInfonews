@@ -47,10 +47,10 @@ export function Nav() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-[100] border-b border-[#2A2A2A] transition-all duration-200",
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
           scrolled
-            ? "bg-[rgba(17,17,17,0.95)] backdrop-blur-[16px]"
-            : "bg-[#111111]"
+            ? "bg-[rgba(6,6,8,0.88)] backdrop-blur-[28px] border-b border-[rgba(255,255,255,0.05)]"
+            : "bg-[rgba(6,6,8,0.60)] backdrop-blur-[16px] border-b border-[rgba(255,255,255,0.04)]"
         )}
         aria-label="Main navigation"
       >
