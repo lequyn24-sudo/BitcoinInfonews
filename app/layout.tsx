@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body
-        className="bg-[#060608] text-white min-h-screen"
+        className="bg-[#07070F] text-white min-h-screen"
         style={{ fontFamily: "var(--font-inter, Inter), sans-serif" }}
       >
         <Nav />

@@ -8,15 +8,15 @@ interface SidebarProps {
   priceData: PriceData;
 }
 
-/* Shared glass widget base */
+/* NOVA-mapped glass widget — cool blue-black tint */
 const widget = {
-  background: "rgba(10,10,12,0.65)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  background: "rgba(10,10,20,0.65)",
+  backdropFilter: "blur(22px)",
+  WebkitBackdropFilter: "blur(22px)",
   border: "1px solid rgba(255,255,255,0.06)",
   borderRadius: "12px",
   padding: "16px",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+  boxShadow: "0 4px 20px rgba(0,0,0,0.30)",
 };
 
 const sectionLabel = {
@@ -24,7 +24,7 @@ const sectionLabel = {
   fontWeight: 500,
   textTransform: "uppercase" as const,
   letterSpacing: "0.12em",
-  color: "#383838",
+  color: "#38384C",   /* NOVA tertiary — cool ghost gray */
   marginBottom: "14px",
   display: "block",
 };
@@ -43,8 +43,9 @@ export function Sidebar({ priceData }: SidebarProps) {
             <TrendUp size={13} style={{ color: "#F7931A" }} />
             <span style={{ ...sectionLabel, marginBottom: 0 }}>Bitcoin</span>
           </div>
-          <span className="flex items-center gap-[5px]" style={{ fontSize: "9px", color: "#00C896", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            <span className="w-[4px] h-[4px] rounded-full bg-[#00C896] pulse-dot" style={{ boxShadow: "0 0 5px rgba(0,200,150,0.5)" }} />
+          <span className="flex items-center gap-[5px]" style={{ fontSize: "9px", color: "#F7931A", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            {/* Amber live dot — brand accent (maps NOVA's green live) */}
+            <span className="w-[4px] h-[4px] rounded-full bg-[#F7931A] pulse-dot dot-glow-amber" />
             Live
           </span>
         </div>
@@ -86,10 +87,10 @@ export function Sidebar({ priceData }: SidebarProps) {
         </div>
 
         <div className="flex justify-between">
-          <span style={{ fontSize: "10px", color: "#383838" }}>
+          <span style={{ fontSize: "10px", color: "#38384C"}}>
             H: <span style={{ fontFamily: "var(--font-jetbrains, monospace)", color: "#505050" }}>{formatPrice(priceData.high24h)}</span>
           </span>
-          <span style={{ fontSize: "10px", color: "#383838" }}>
+          <span style={{ fontSize: "10px", color: "#38384C"}}>
             L: <span style={{ fontFamily: "var(--font-jetbrains, monospace)", color: "#505050" }}>{formatPrice(priceData.low24h)}</span>
           </span>
         </div>
@@ -181,7 +182,7 @@ export function Sidebar({ priceData }: SidebarProps) {
                 <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "12px", fontWeight: 500, color: "#fff", width: "32px" }}>
                   {m.symbol}
                 </span>
-                <span style={{ fontSize: "11px", color: "#383838" }}>{m.name}</span>
+                <span style={{ fontSize: "11px", color: "#38384C"}}>{m.name}</span>
               </div>
               <div className="text-right">
                 <p style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "12px", color: "#fff" }}>

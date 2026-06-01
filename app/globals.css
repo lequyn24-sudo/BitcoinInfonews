@@ -9,26 +9,27 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1440px;
 
-  /* Surface colors */
-  --color-void: #0A0A0A;
-  --color-obsidian: #111111;
-  --color-carbon: #1A1A1A;
-  --color-graphite: #242424;
+  /* ── NOVA-mapped surface colors (cool blue-black tint) ── */
+  --color-void:      #07070F;   /* deepest — NOVA #070709 equivalent          */
+  --color-obsidian:  #0D0D16;   /* page shell — NOVA #0D0D10 cool             */
+  --color-carbon:    #111120;   /* card surface — NOVA #131318 cool           */
+  --color-graphite:  #17172A;   /* elevated card — NOVA #1A1A20 cool          */
 
-  /* Text colors */
-  --color-white: #FFFFFF;
-  --color-mist: #A0A0A0;
-  --color-slate: #666666;
+  /* ── Text colors (cool-tinted grays like NOVA) ── */
+  --color-white:  #FFFFFF;
+  --color-mist:   #9898B0;      /* NOVA secondary text — cool, not warm       */
+  --color-slate:  #52526A;      /* NOVA tertiary — cool dark gray             */
+  --color-ghost:  #38384C;      /* NOVA disabled / ghost                      */
 
-  /* Accent colors */
-  --color-amber: #F7931A;
-  --color-green: #00C896;
-  --color-red: #FF4D4D;
-  --color-yellow: #FFB800;
-  --color-blue: #3B9EFF;
+  /* ── Bitcoin InfoNews accent (maps to NOVA's vivid green role) ── */
+  --color-amber:  #F7931A;      /* PRIMARY brand accent — replaces NOVA green */
+  --color-green:  #00C896;      /* SEMANTIC only: price up, system live       */
+  --color-red:    #FF4D4D;      /* SEMANTIC only: price down, error           */
+  --color-yellow: #FFB800;      /* Warning / sponsored                        */
+  --color-blue:   #3B9EFF;      /* PR badge / info                            */
 
-  /* Border */
-  --color-border: #2A2A2A;
+  /* ── Borders (NOVA near-invisible) ── */
+  --color-border: rgba(255,255,255,0.07);
 
   /* Font families */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -36,12 +37,12 @@
 }
 
 html {
-  background-color: #060608;
+  background-color: #07070F;
   color: #FFFFFF;
 }
 
 body {
-  background-color: #060608;
+  background-color: #07070F;
   color: #FFFFFF;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -169,27 +170,51 @@ body {
 .hero-enter-5 { animation: fade-in-up 500ms ease-out 500ms both; }
 .hero-enter-6 { animation: fade-in 600ms ease-out 350ms both; }
 
-/* Glass panel — base frosted surface */
+/* ── Glass panel — NOVA-style frosted surface (cool-tinted) ── */
 .glass {
-  background: rgba(12, 12, 14, 0.60);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 20, 0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Amber volumetric glow */
+/* ── NOVA amber glow — maps to NOVA's green self-luminous treatment ──
+   In NOVA: green elements feel like they emit real light.
+   Here: amber elements get the same self-luminous quality.           */
 .glow-amber {
   box-shadow:
-    0 0 60px rgba(247, 147, 26, 0.12),
+    0 0 20px rgba(247, 147, 26, 0.35),
+    0 0 60px rgba(247, 147, 26, 0.15),
     0 0 120px rgba(247, 147, 26, 0.06);
 }
 
-/* Subtle text glow for live data */
+/* Amber text glow — for INVEST., live badge labels, active accent text */
+.text-glow-amber {
+  text-shadow:
+    0 0 12px rgba(247, 147, 26, 0.60),
+    0 0 30px rgba(247, 147, 26, 0.25);
+}
+
+/* Semantic text glows — price data only */
 .text-glow-green {
-  text-shadow: 0 0 20px rgba(0, 200, 150, 0.4);
+  text-shadow: 0 0 16px rgba(0, 200, 150, 0.45);
 }
 .text-glow-red {
-  text-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+  text-shadow: 0 0 16px rgba(255, 77, 77, 0.45);
+}
+
+/* Amber dot glow — maps NOVA's green live dot */
+.dot-glow-amber {
+  box-shadow:
+    0 0 6px 2px rgba(247, 147, 26, 0.55),
+    0 0 14px 4px rgba(247, 147, 26, 0.20);
+}
+
+/* Green dot glow — semantic: system live / data connected */
+.dot-glow-green {
+  box-shadow:
+    0 0 6px 2px rgba(0, 200, 150, 0.55),
+    0 0 14px 4px rgba(0, 200, 150, 0.20);
 }
 
 /* Signal feed row hover */

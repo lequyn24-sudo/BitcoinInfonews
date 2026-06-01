@@ -12,14 +12,14 @@ interface ArticleFeedProps {
   sectionHref?: string;
 }
 
-/* NOVA glass base */
+/* NOVA-mapped glass base — cool blue-black tint matches NOVA card darkness */
 const glassCard = {
-  background: "rgba(10,10,12,0.65)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  background: "rgba(10,10,20,0.68)",
+  backdropFilter: "blur(22px)",
+  WebkitBackdropFilter: "blur(22px)",
   border: "1px solid rgba(255,255,255,0.06)",
   borderRadius: "12px",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.28)",
+  boxShadow: "0 4px 22px rgba(0,0,0,0.32)",
 };
 
 /* Top story — cinematic, large image, glass text overlay */
@@ -229,7 +229,7 @@ export function ArticleFeed({
       {showSection && (
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#383838" }}>
+            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#38384C" }}>
               {sectionTitle}
             </span>
             <div className="w-[32px] h-[1px]" style={{ background: "rgba(255,255,255,0.06)" }} />
@@ -269,7 +269,7 @@ export function ArticleFeed({
       {sponsored.length > 0 && (
         <div>
           <div className="flex items-center gap-4 mb-4">
-            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#383838" }}>
+            <span style={{ fontSize: "10px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#38384C" }}>
               Sponsored
             </span>
             <div className="flex-1 h-[1px]" style={{ background: "rgba(255,255,255,0.04)" }} />

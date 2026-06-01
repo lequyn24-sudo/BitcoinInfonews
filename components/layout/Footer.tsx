@@ -30,7 +30,7 @@ const companyLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#2A2A2A]">
+    <footer className="bg-[#07070F] border-t border-[rgba(255,255,255,0.05)]">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 pt-[64px] pb-[48px]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {/* Brand */}
@@ -44,7 +44,7 @@ export function Footer() {
                 className="h-[28px] w-auto object-contain"
               />
             </Link>
-            <p className="text-[13px] text-[#A0A0A0] leading-[1.6] max-w-[240px] mb-6">
+            <p className="text-[13px] text-[#52526A] leading-[1.6] max-w-[240px] mb-6">
               Useful Bitcoin information should be easier to find, easier to understand, easier to trust.
             </p>
             <div className="flex items-center gap-4">
@@ -53,7 +53,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter / X"
-                className="text-[#A0A0A0] hover:text-white transition-colors"
+                className="text-[#52526A] hover:text-white transition-colors"
               >
                 <XLogo size={20} />
               </a>
@@ -62,7 +62,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-[#A0A0A0] hover:text-white transition-colors"
+                className="text-[#52526A] hover:text-white transition-colors"
               >
                 <FacebookLogo size={20} />
               </a>
@@ -71,7 +71,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-[#A0A0A0] hover:text-white transition-colors"
+                className="text-[#52526A] hover:text-white transition-colors"
               >
                 <InstagramLogo size={20} />
               </a>
@@ -80,7 +80,7 @@ export function Footer() {
 
           {/* Content */}
           <div>
-            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-4">
+            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#52526A] mb-4">
               Content
             </p>
             <ul className="space-y-0">
@@ -99,7 +99,7 @@ export function Footer() {
 
           {/* Events & Sponsored */}
           <div>
-            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-4">
+            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#52526A] mb-4">
               Events & Sponsored
             </p>
             <ul className="space-y-0">
@@ -118,7 +118,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#A0A0A0] mb-4">
+            <p className="text-[12px] font-[500] uppercase tracking-[0.06em] text-[#52526A] mb-4">
               Company
             </p>
             <ul className="space-y-0">
@@ -133,7 +133,7 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-[11px] text-[#A0A0A0] italic leading-[1.5]">
+            <p className="mt-6 text-[11px] text-[#52526A] italic leading-[1.5]">
               This content is for informational purposes only and does not constitute financial advice.
             </p>
           </div>
@@ -141,9 +141,9 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-[#2A2A2A] bg-[#0A0A0A]">
+      <div className="border-t border-[rgba(255,255,255,0.05)] bg-[#07070F]">
         <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-[20px] flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[12px] text-[#A0A0A0]">
+          <p className="text-[12px] text-[#52526A]">
             © 2026 BitcoinInfoNews
           </p>
           <div className="flex flex-wrap items-center gap-4">
@@ -151,7 +151,7 @@ export function Footer() {
               <Link
                 key={item}
                 href="/other"
-                className="text-[12px] text-[#A0A0A0] hover:text-white transition-colors"
+                className="text-[12px] text-[#52526A] hover:text-white transition-colors"
               >
                 {item}
               </Link>
