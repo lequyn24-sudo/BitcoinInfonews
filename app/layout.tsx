@@ -52,13 +52,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           aria-hidden="true"
           style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "#07070F" }}
         >
-          {/* Dot grid — primary texture every glass panel blurs against */}
+          {/* Dot grid — 1.5px dots at 18% opacity, 28px spacing.
+              Must be visible enough to create a clear frosted haze
+              pattern when blurred by glass panels above.            */}
           <div
             style={{
               position: "absolute",
               inset: 0,
-              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
-              backgroundSize: "36px 36px",
+              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px)",
+              backgroundSize: "28px 28px",
             }}
           />
 

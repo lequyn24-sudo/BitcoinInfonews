@@ -133,9 +133,9 @@ export function Hero({ priceData, marketStatus }: HeroProps) {
             <div
               className="absolute bottom-[48px] right-0 z-[40] floating hero-enter-6"
               style={{
-                background: "rgba(7,7,15,0.48)",
-                backdropFilter: "blur(36px)",
-                WebkitBackdropFilter: "blur(36px)",
+                background: "rgba(7,7,15,0.22)",
+                backdropFilter: "blur(36px) saturate(1.5)",
+                WebkitBackdropFilter: "blur(36px) saturate(1.5)",
                 border: "1px solid rgba(255,255,255,0.10)",
                 borderRadius: "14px",
                 padding: "20px 24px",

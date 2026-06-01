@@ -12,17 +12,17 @@ interface ArticleFeedProps {
   sectionHref?: string;
 }
 
-/* NOVA-mapped glass — low opacity so backdrop bleeds through visibly */
+/* NOVA glass — very low opacity so bright backdrop orbs show through */
 const glassCard = {
-  background: "rgba(10,10,20,0.38)",
-  backdropFilter: "blur(32px)",
-  WebkitBackdropFilter: "blur(32px)",
-  border: "1px solid rgba(255,255,255,0.08)",
+  background: "rgba(10,10,20,0.18)",
+  backdropFilter: "blur(28px) saturate(1.4)",
+  WebkitBackdropFilter: "blur(28px) saturate(1.4)",
+  border: "1px solid rgba(255,255,255,0.10)",
   borderRadius: "12px",
   boxShadow: `
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    inset 0 -1px 0 rgba(0,0,0,0.20),
-    0 8px 32px rgba(0,0,0,0.40)
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    inset 0 -1px 0 rgba(0,0,0,0.25),
+    0 8px 32px rgba(0,0,0,0.35)
   `,
 };
 
