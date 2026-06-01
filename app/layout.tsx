@@ -49,8 +49,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         ══════════════════════════════════════════════════════════════ */}
         <div
           aria-hidden="true"
-          style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "#07070F" }}
+          style={{
+            position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none",
+            backgroundColor: "#07070F",
+            /* Background image — orange particle wave — place at /public/images/hero-bg.jpg */
+            backgroundImage: "url('/images/hero-bg.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
+          {/* Strong dark overlay so the image is subtle behind content sections */}
+          <div style={{ position: "absolute", inset: 0, background: "rgba(7,7,15,0.78)" }} />
+
           {/* ── Perspective grid SVG — fading lines add spatial depth ── */}
           <svg
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}

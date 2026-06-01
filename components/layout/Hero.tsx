@@ -21,178 +21,55 @@ export function Hero({ priceData, marketStatus }: HeroProps) {
       aria-label="Hero"
     >
       {/* ══════════════════════════════════════════════════════
-          ABSTRACT BACKGROUND — SVG COMPOSITION
-          5 visual roles mapped from NOVA reference:
-          1. Focal sphere   → amber radial gradient (NOVA: planet)
-          2. Orbital rings  → thin ellipses (NOVA: orbital paths)
-          3. Star field     → scattered dots varying size/opacity
-          4. Network nodes  → amber dots + connection lines
-          5. Blue accent    → blue radial (NOVA: atmospheric blue)
+          BACKGROUND: Abstract particle wave image
+          → Place your image at: /public/images/hero-bg.jpg
+          → The orange particle waves create perfect glassmorphism
+            backdrop — frosted glass panels blur the particles
+            into a beautiful haze visible through every card.
       ══════════════════════════════════════════════════════ */}
 
       {/* Base void */}
       <div className="absolute inset-0" style={{ background: "#07070F" }} />
 
-      {/* The SVG composition */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 1280 900"
-        preserveAspectRatio="xMidYMid slice"
-        aria-hidden="true"
-      >
-        <defs>
-          {/* 1. Focal sphere — amber, fades outward */}
-          <radialGradient id="hFocal" cx="62%" cy="48%" r="35%" gradientUnits="objectBoundingBox">
-            <stop offset="0%"   stopColor="#F7931A" stopOpacity="0.22" />
-            <stop offset="35%"  stopColor="#F7931A" stopOpacity="0.09" />
-            <stop offset="70%"  stopColor="#F7931A" stopOpacity="0.02" />
-            <stop offset="100%" stopColor="#F7931A" stopOpacity="0" />
-          </radialGradient>
-          {/* Inner core — brighter centre */}
-          <radialGradient id="hCore" cx="60%" cy="44%" r="13%" gradientUnits="objectBoundingBox">
-            <stop offset="0%"   stopColor="#F7931A" stopOpacity="0.42" />
-            <stop offset="60%"  stopColor="#F7931A" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#F7931A" stopOpacity="0" />
-          </radialGradient>
-          {/* Blue accent — top-right corner */}
-          <radialGradient id="hBlue" cx="90%" cy="18%" r="28%" gradientUnits="objectBoundingBox">
-            <stop offset="0%"   stopColor="#3B9EFF" stopOpacity="0.18" />
-            <stop offset="60%"  stopColor="#3B9EFF" stopOpacity="0.05" />
-            <stop offset="100%" stopColor="#3B9EFF" stopOpacity="0" />
-          </radialGradient>
-          {/* Bottom-right ambient glow */}
-          <radialGradient id="hBottom" cx="72%" cy="100%" r="32%" gradientUnits="objectBoundingBox">
-            <stop offset="0%"   stopColor="#F7931A" stopOpacity="0.14" />
-            <stop offset="100%" stopColor="#F7931A" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-
-        {/* ── 1. FOCAL SPHERE ── */}
-        <rect x="0" y="0" width="1280" height="900" fill="url(#hFocal)" />
-        <rect x="0" y="0" width="1280" height="900" fill="url(#hCore)" />
-        {/* Sphere edge rim — bright arc upper-left side of sphere */}
-        <circle cx="793" cy="430" r="270"
-          fill="none"
-          stroke="rgba(247,147,26,0.22)"
-          strokeWidth="1.5"
-          strokeDasharray="280 1760"
-          strokeDashoffset="-60"
-        />
-        {/* Outer faint halo */}
-        <circle cx="793" cy="430" r="320"
-          fill="none"
-          stroke="rgba(247,147,26,0.07)"
-          strokeWidth="1"
-        />
-
-        {/* ── 2. ORBITAL RING PATHS ── */}
-        <ellipse cx="793" cy="430" rx="350" ry="88"
-          fill="none" stroke="rgba(255,255,255,0.050)" strokeWidth="1"
-          transform="rotate(-20, 793, 430)"
-        />
-        <ellipse cx="793" cy="430" rx="260" ry="62"
-          fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8"
-          transform="rotate(-32, 793, 430)"
-        />
-        <ellipse cx="793" cy="430" rx="170" ry="44"
-          fill="none" stroke="rgba(247,147,26,0.09)" strokeWidth="0.7"
-          transform="rotate(-14, 793, 430)"
-        />
-        {/* Orbital dot — small marker on ring 1 */}
-        <circle cx="1110" cy="380" r="3" fill="rgba(255,255,255,0.50)" />
-        <circle cx="1110" cy="380" r="6" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        {/* Orbital dot on ring 2 */}
-        <circle cx="555" cy="500" r="2.5" fill="rgba(247,147,26,0.60)" />
-
-        {/* ── 3. STAR FIELD — varying sizes, no regular pattern ── */}
-        {/* Bright / large */}
-        <circle cx="118"  cy="88"  r="1.8" fill="rgba(255,255,255,0.72)" />
-        <circle cx="1142" cy="122" r="2.0" fill="rgba(255,255,255,0.68)" />
-        <circle cx="968"  cy="276" r="1.7" fill="rgba(255,255,255,0.62)" />
-        <circle cx="672"  cy="634" r="1.8" fill="rgba(255,255,255,0.58)" />
-        <circle cx="212"  cy="508" r="1.6" fill="rgba(255,255,255,0.64)" />
-        <circle cx="1188" cy="690" r="2.0" fill="rgba(255,255,255,0.52)" />
-        <circle cx="440"  cy="76"  r="1.9" fill="rgba(255,255,255,0.60)" />
-        {/* Medium */}
-        <circle cx="316"  cy="196" r="1.2" fill="rgba(255,255,255,0.46)" />
-        <circle cx="562"  cy="148" r="1.1" fill="rgba(255,255,255,0.43)" />
-        <circle cx="906"  cy="106" r="1.3" fill="rgba(255,255,255,0.50)" />
-        <circle cx="1058" cy="358" r="1.1" fill="rgba(255,255,255,0.42)" />
-        <circle cx="482"  cy="724" r="1.2" fill="rgba(255,255,255,0.39)" />
-        <circle cx="748"  cy="806" r="1.1" fill="rgba(255,255,255,0.36)" />
-        <circle cx="1152" cy="502" r="1.0" fill="rgba(255,255,255,0.40)" />
-        <circle cx="138"  cy="342" r="1.2" fill="rgba(255,255,255,0.44)" />
-        <circle cx="638"  cy="48"  r="1.1" fill="rgba(255,255,255,0.46)" />
-        <circle cx="1020" cy="766" r="1.3" fill="rgba(255,255,255,0.35)" />
-        <circle cx="274"  cy="702" r="1.0" fill="rgba(255,255,255,0.38)" />
-        <circle cx="844"  cy="828" r="1.2" fill="rgba(255,255,255,0.32)" />
-        {/* Small */}
-        <circle cx="86"   cy="118" r="0.8" fill="rgba(255,255,255,0.30)" />
-        <circle cx="208"  cy="58"  r="0.7" fill="rgba(255,255,255,0.28)" />
-        <circle cx="376"  cy="418" r="0.8" fill="rgba(255,255,255,0.26)" />
-        <circle cx="534"  cy="312" r="0.7" fill="rgba(255,255,255,0.24)" />
-        <circle cx="694"  cy="234" r="0.9" fill="rgba(255,255,255,0.28)" />
-        <circle cx="1068" cy="184" r="0.8" fill="rgba(255,255,255,0.30)" />
-        <circle cx="1218" cy="338" r="0.7" fill="rgba(255,255,255,0.25)" />
-        <circle cx="168"  cy="614" r="0.8" fill="rgba(255,255,255,0.27)" />
-        <circle cx="358"  cy="556" r="0.7" fill="rgba(255,255,255,0.24)" />
-        <circle cx="916"  cy="574" r="0.8" fill="rgba(255,255,255,0.22)" />
-        <circle cx="1086" cy="626" r="0.7" fill="rgba(255,255,255,0.26)" />
-        <circle cx="624"  cy="764" r="0.9" fill="rgba(255,255,255,0.24)" />
-        <circle cx="46"   cy="442" r="0.8" fill="rgba(255,255,255,0.28)" />
-        <circle cx="1234" cy="812" r="0.7" fill="rgba(255,255,255,0.22)" />
-        <circle cx="786"  cy="164" r="0.8" fill="rgba(255,255,255,0.30)" />
-        <circle cx="1002" cy="468" r="0.7" fill="rgba(255,255,255,0.24)" />
-
-        {/* ── 4. NETWORK NODE CLUSTER ── */}
-        {/* Connection lines */}
-        <line x1="910" y1="258" x2="990"  y2="312" stroke="rgba(247,147,26,0.14)" strokeWidth="0.8" />
-        <line x1="990" y1="312" x2="1028" y2="218" stroke="rgba(247,147,26,0.11)" strokeWidth="0.8" />
-        <line x1="910" y1="258" x2="1028" y2="218" stroke="rgba(247,147,26,0.09)" strokeWidth="0.6" />
-        <line x1="990" y1="312" x2="1068" y2="354" stroke="rgba(247,147,26,0.10)" strokeWidth="0.7" />
-        <line x1="910" y1="258" x2="862"  y2="192" stroke="rgba(247,147,26,0.08)" strokeWidth="0.6" />
-        <line x1="1028" y1="218" x2="1108" y2="170" stroke="rgba(247,147,26,0.07)" strokeWidth="0.6" />
-        {/* Node dots */}
-        <circle cx="910"  cy="258" r="3.2" fill="rgba(247,147,26,0.60)" />
-        <circle cx="990"  cy="312" r="2.6" fill="rgba(247,147,26,0.48)" />
-        <circle cx="1028" cy="218" r="2.2" fill="rgba(247,147,26,0.44)" />
-        <circle cx="1068" cy="354" r="2.8" fill="rgba(247,147,26,0.46)" />
-        <circle cx="862"  cy="192" r="2.0" fill="rgba(247,147,26,0.38)" />
-        <circle cx="1108" cy="170" r="2.4" fill="rgba(247,147,26,0.40)" />
-        {/* Node glow rings */}
-        <circle cx="910" cy="258" r="9"  fill="none" stroke="rgba(247,147,26,0.18)" strokeWidth="1" />
-        <circle cx="990" cy="312" r="8"  fill="none" stroke="rgba(247,147,26,0.14)" strokeWidth="1" />
-        <circle cx="1028" cy="218" r="7" fill="none" stroke="rgba(247,147,26,0.12)" strokeWidth="1" />
-
-        {/* ── 5. BLUE ACCENT + BOTTOM GLOW ── */}
-        <rect x="0" y="0" width="1280" height="900" fill="url(#hBlue)" />
-        <rect x="0" y="0" width="1280" height="900" fill="url(#hBottom)" />
-      </svg>
-
-      {/* Subtle scanlines overlay */}
+      {/* Background — dark amber 3D abstract form
+          Positioned right-center so the amber shape sits in the
+          center-right visual zone (text stays on dark left)     */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.007) 3px, rgba(255,255,255,0.007) 4px)",
+          backgroundImage: "url('/images/hero-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "70% center",
+          backgroundRepeat: "no-repeat",
         }}
       />
 
-      {/* Left-to-right legibility overlay — text area stays dark */}
+      {/* Multi-pass overlays for depth and text legibility */}
+
+      {/* Primary directional gradient — left stays dark for text */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(108deg, rgba(7,7,15,0.96) 0%, rgba(7,7,15,0.76) 32%, rgba(7,7,15,0.12) 62%, rgba(7,7,15,0.48) 100%)",
+            "linear-gradient(108deg, rgba(7,7,15,0.95) 0%, rgba(7,7,15,0.72) 30%, rgba(7,7,15,0.08) 60%, rgba(7,7,15,0.45) 100%)",
         }}
       />
 
-      {/* Top + bottom vignette */}
+      {/* Top darkness — nav area stays clean */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(7,7,15,0.72) 0%, transparent 20%, transparent 75%, rgba(7,7,15,0.92) 100%)",
+            "linear-gradient(to bottom, rgba(7,7,15,0.75) 0%, transparent 22%, transparent 72%, rgba(7,7,15,0.92) 100%)",
+        }}
+      />
+
+      {/* Subtle scanlines */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px)",
         }}
       />
 
@@ -257,6 +134,7 @@ export function Hero({ priceData, marketStatus }: HeroProps) {
 
           {/* ── Col 5–9: Center — floating glass card ── */}
           <div className="hidden md:block lg:col-span-5 relative h-full min-h-[320px]">
+            {/* Glass card — particle wave image shows through frosted surface */}
             <div
               className="absolute bottom-[48px] right-0 z-[40] floating hero-enter-6"
               style={{
@@ -268,10 +146,10 @@ export function Hero({ priceData, marketStatus }: HeroProps) {
                 padding: "20px 24px",
                 minWidth: "220px",
                 boxShadow: `
-                  inset 0 1px 0 rgba(255,255,255,0.10),
+                  inset 0 1px 0 rgba(255,255,255,0.12),
                   inset 0 -1px 0 rgba(0,0,0,0.30),
                   0 12px 48px rgba(0,0,0,0.55),
-                  0 0 0 1px rgba(247,147,26,0.05)
+                  0 0 0 1px rgba(247,147,26,0.06)
                 `,
               }}
             >
