@@ -128,10 +128,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             }}
           />
 
-          {/* ── Two amber orbs for color warmth ── */}
-          <div className="bg-orb bg-orb-primary" />
-          <div className="bg-orb bg-orb-secondary" />
-
           {/* Subtle scanlines */}
           <div
             style={{
