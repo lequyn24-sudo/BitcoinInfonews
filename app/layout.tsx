@@ -40,51 +40,63 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body
         className="text-white min-h-screen relative"
-        style={{
-          backgroundColor: "#07070F",
-          fontFamily: "var(--font-inter, Inter), sans-serif",
-        }}
+        style={{ backgroundColor: "#07070F", fontFamily: "var(--font-inter, Inter), sans-serif" }}
       >
-        {/* ─────────────────────────────────────────────────────────────
-            FIXED ATMOSPHERIC BACKDROP
-            This stays fixed while all glass panels scroll over it.
-            Glassmorphism requires a rich background to blur through.
-            Maps NOVA's space imagery as a persistent depth layer.
-        ───────────────────────────────────────────────────────────── */}
+        {/* ══════════════════════════════════════════════════════════════
+            GLOBAL FIXED ABSTRACT BACKDROP
+            Stays in place as content scrolls over it.
+            All glass panels throughout the page blur this backdrop,
+            making the frosted glass effect visible everywhere.
+        ══════════════════════════════════════════════════════════════ */}
         <div
           aria-hidden="true"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 0,
-            pointerEvents: "none",
-            /* Base void */
-            backgroundColor: "#07070F",
-            /* Multi-point atmospheric glow — mimics NOVA's planetary light sources */
-            backgroundImage: `
-              radial-gradient(ellipse at 15% 25%, rgba(247,147,26,0.055) 0%, transparent 42%),
-              radial-gradient(ellipse at 85% 15%, rgba(247,147,26,0.030) 0%, transparent 38%),
-              radial-gradient(ellipse at 75% 75%, rgba(59,158,255,0.025) 0%, transparent 40%),
-              radial-gradient(ellipse at 30% 80%, rgba(247,147,26,0.020) 0%, transparent 35%)
-            `,
-          }}
-        />
+          style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "#07070F" }}
+        >
+          {/* Dot grid — primary texture every glass panel blurs against */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
+              backgroundSize: "36px 36px",
+            }}
+          />
 
-        {/* Subtle noise grain — makes the void feel material, not digital flat */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 0,
-            pointerEvents: "none",
-            opacity: 0.018,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundSize: "200px 200px",
-          }}
-        />
+          {/* Primary amber orb — upper right quadrant */}
+          <div className="bg-orb bg-orb-primary" />
 
-        {/* All page content sits above the fixed backdrop (z-index: 1+) */}
+          {/* Secondary amber orb — mid left */}
+          <div className="bg-orb bg-orb-secondary" />
+
+          {/* Blue accent orb — top right edge */}
+          <div className="bg-orb bg-orb-accent" />
+
+          {/* Bottom orb — for dashboard card / feed area */}
+          <div className="bg-orb bg-orb-bottom" />
+
+          {/* Subtle scanlines for sci-fi texture */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage:
+                "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.006) 3px, rgba(255,255,255,0.006) 4px)",
+            }}
+          />
+
+          {/* Noise grain — adds material warmth */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: 0.016,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+              backgroundSize: "200px 200px",
+            }}
+          />
+        </div>
+
+        {/* Page content sits above backdrop */}
         <div className="relative" style={{ zIndex: 1 }}>
           <Nav />
           <main>{children}</main>

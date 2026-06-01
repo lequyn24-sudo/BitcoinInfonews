@@ -248,3 +248,90 @@ body {
 .floating {
   animation: float 6s ease-in-out infinite;
 }
+
+/* ──────────────────────────────────────────────────────────
+   ABSTRACT BACKGROUND SYSTEM
+   Animated volumetric orbs that make glass panels visible.
+   Orbs are blurred large circles at strategic positions.
+   Glass panels blur these → frosted glass effect is clear.
+────────────────────────────────────────────────────────── */
+
+/* Orb slow drift */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25%       { transform: translate(30px, -20px) scale(1.04); }
+  50%       { transform: translate(10px, 15px) scale(0.97); }
+  75%       { transform: translate(-20px, -10px) scale(1.02); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-25px, 20px) scale(1.06); }
+  66%       { transform: translate(15px, -15px) scale(0.95); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  40%       { transform: translate(20px, 12px) scale(1.03); }
+  80%       { transform: translate(-8px, -18px) scale(0.98); }
+}
+
+/* Base orb */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Primary orb — amber, hero right area */
+.bg-orb-primary {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(247,147,26,0.18) 0%, rgba(247,147,26,0.06) 50%, transparent 70%);
+  filter: blur(60px);
+  top: 5%;
+  right: 8%;
+  animation: orb-drift-1 14s ease-in-out infinite;
+}
+
+/* Secondary orb — deep amber, center */
+.bg-orb-secondary {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(247,147,26,0.10) 0%, rgba(247,147,26,0.03) 60%, transparent 75%);
+  filter: blur(80px);
+  top: 40%;
+  left: 30%;
+  animation: orb-drift-2 18s ease-in-out infinite;
+}
+
+/* Accent orb — blue, far right */
+.bg-orb-accent {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(59,158,255,0.07) 0%, transparent 70%);
+  filter: blur(60px);
+  top: 15%;
+  right: 2%;
+  animation: orb-drift-3 22s ease-in-out infinite;
+}
+
+/* Bottom orb — warm amber, cards area */
+.bg-orb-bottom {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(247,147,26,0.08) 0%, transparent 65%);
+  filter: blur(80px);
+  bottom: 5%;
+  left: 15%;
+  animation: orb-drift-1 20s ease-in-out infinite reverse;
+}
+
+/* Dot-grid overlay — each dot is visible through glass blur, making
+   the frosted effect clearly legible to the eye                      */
+.bg-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
