@@ -88,15 +88,18 @@ function RadarViz({ price, change, isPositive }: { price: number; change: number
   );
 }
 
-/* ── NOVA-mapped glass card base ──
-   NOVA card: dark, cool-tinted, glass-like, barely-there border */
+/* ── NOVA-mapped glass card — opacity low enough to see backdrop blur ── */
 const CARD: React.CSSProperties = {
-  background: "rgba(10,10,20,0.68)",
-  backdropFilter: "blur(24px)",
-  WebkitBackdropFilter: "blur(24px)",
-  border: "1px solid rgba(255,255,255,0.06)",
+  background: "rgba(10,10,20,0.38)",
+  backdropFilter: "blur(32px)",
+  WebkitBackdropFilter: "blur(32px)",
+  border: "1px solid rgba(255,255,255,0.08)",
   borderRadius: "12px",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.35)",
+  boxShadow: `
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 8px 32px rgba(0,0,0,0.40)
+  `,
 };
 
 export function DashboardCards({ featuredArticle, breakingArticle, priceData, recentArticles }: DashboardCardsProps) {
@@ -177,7 +180,7 @@ export function DashboardCards({ featuredArticle, breakingArticle, priceData, re
         )}
 
         {/* Card C — Bitcoin Price · Orbital viz */}
-        <div className="flex flex-col min-h-[280px] p-4" style={{ ...CARD, background: "rgba(12,10,22,0.75)" }}>
+        <div className="flex flex-col min-h-[280px] p-4" style={{ ...CARD, background: "rgba(14,10,26,0.42)" }}>
           {/* LIVE dot: amber (brand accent) */}
           <CardHeader label="Bitcoin Price" right="Live" rightColor="#F7931A" pulse pulseGlow="amber" />
           <RadarViz price={priceData.price} change={priceData.change24h} isPositive={isPositive} />

@@ -12,14 +12,18 @@ interface ArticleFeedProps {
   sectionHref?: string;
 }
 
-/* NOVA-mapped glass base — cool blue-black tint matches NOVA card darkness */
+/* NOVA-mapped glass — low opacity so backdrop bleeds through visibly */
 const glassCard = {
-  background: "rgba(10,10,20,0.68)",
-  backdropFilter: "blur(22px)",
-  WebkitBackdropFilter: "blur(22px)",
-  border: "1px solid rgba(255,255,255,0.06)",
+  background: "rgba(10,10,20,0.38)",
+  backdropFilter: "blur(32px)",
+  WebkitBackdropFilter: "blur(32px)",
+  border: "1px solid rgba(255,255,255,0.08)",
   borderRadius: "12px",
-  boxShadow: "0 4px 22px rgba(0,0,0,0.32)",
+  boxShadow: `
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 8px 32px rgba(0,0,0,0.40)
+  `,
 };
 
 /* Top story — cinematic, large image, glass text overlay */

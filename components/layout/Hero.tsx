@@ -148,15 +148,19 @@ export function Hero({ priceData, marketStatus }: HeroProps) {
             <div
               className="absolute bottom-[48px] right-0 z-[40] floating hero-enter-6"
               style={{
-                /* NOVA glass card — cool-tinted dark glass */
-                background: "rgba(10,10,20,0.75)",
-                backdropFilter: "blur(32px)",
-                WebkitBackdropFilter: "blur(32px)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                /* Floating glass card — hero image is the backdrop, so glass reads clearly */
+                background: "rgba(7,7,15,0.52)",
+                backdropFilter: "blur(36px)",
+                WebkitBackdropFilter: "blur(36px)",
+                border: "1px solid rgba(255,255,255,0.10)",
                 borderRadius: "14px",
                 padding: "20px 24px",
                 minWidth: "220px",
-                boxShadow: "0 8px 40px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.05)",
+                boxShadow: `
+                  inset 0 1px 0 rgba(255,255,255,0.10),
+                  inset 0 -1px 0 rgba(0,0,0,0.25),
+                  0 12px 48px rgba(0,0,0,0.55)
+                `,
               }}
             >
               <p style={{ fontSize: "9px", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.12em", color: "#52526A", marginBottom: "8px" }}>

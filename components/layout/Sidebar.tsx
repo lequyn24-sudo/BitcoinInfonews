@@ -8,15 +8,19 @@ interface SidebarProps {
   priceData: PriceData;
 }
 
-/* NOVA-mapped glass widget — cool blue-black tint */
+/* NOVA-mapped glass widget — low opacity so backdrop bleeds through */
 const widget = {
-  background: "rgba(10,10,20,0.65)",
-  backdropFilter: "blur(22px)",
-  WebkitBackdropFilter: "blur(22px)",
-  border: "1px solid rgba(255,255,255,0.06)",
+  background: "rgba(10,10,20,0.38)",
+  backdropFilter: "blur(32px)",
+  WebkitBackdropFilter: "blur(32px)",
+  border: "1px solid rgba(255,255,255,0.08)",
   borderRadius: "12px",
   padding: "16px",
-  boxShadow: "0 4px 20px rgba(0,0,0,0.30)",
+  boxShadow: `
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 8px 32px rgba(0,0,0,0.40)
+  `,
 };
 
 const sectionLabel = {
@@ -125,9 +129,9 @@ export function Sidebar({ priceData }: SidebarProps) {
       {/* S3 — Newsletter */}
       <div style={{
         ...widget,
-        background: "rgba(247,147,26,0.04)",
-        border: "1px solid rgba(247,147,26,0.12)",
-        boxShadow: "0 0 30px rgba(247,147,26,0.05), 0 4px 20px rgba(0,0,0,0.25)",
+        background: "rgba(247,147,26,0.06)",
+        border: "1px solid rgba(247,147,26,0.15)",
+        boxShadow: `inset 0 1px 0 rgba(247,147,26,0.10), 0 0 40px rgba(247,147,26,0.07), 0 8px 32px rgba(0,0,0,0.40)`,
       }}>
         <span style={sectionLabel}>Stay Informed</span>
         <p style={{ fontSize: "13px", color: "#fff", marginBottom: "12px", lineHeight: 1.5 }}>
