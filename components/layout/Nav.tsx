@@ -76,7 +76,7 @@ export function Nav() {
                 className={cn(
                   "px-[14px] py-[7px] text-[14px] font-[500] transition-all duration-150 rounded-[6px] whitespace-nowrap",
                   isActive(link.href)
-                    ? "text-[#F7931A] bg-[rgba(247,147,26,0.08)]"
+                    ? "text-[#F7931A] bg-[rgba(255,255,255,0.08)]"
                     : "text-[#A0A0A0] hover:text-white hover:bg-[rgba(255,255,255,0.05)]"
                 )}
               >
@@ -94,7 +94,7 @@ export function Nav() {
                 className={cn(
                   "flex items-center gap-1 px-[14px] py-[7px] text-[14px] font-[500] transition-all duration-150 rounded-[6px]",
                   mainNavLinks.slice(4).some((l) => isActive(l.href))
-                    ? "text-[#F7931A] bg-[rgba(247,147,26,0.08)]"
+                    ? "text-[#F7931A] bg-[rgba(255,255,255,0.08)]"
                     : "text-[#A0A0A0] hover:text-white hover:bg-[rgba(255,255,255,0.05)]"
                 )}
               >

@@ -157,7 +157,7 @@ export function DashboardCards({
         {/* ── Card A — Featured Story ── */}
         <Link
           href={`/${featuredArticle.slug}`}
-          className="group bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] p-[16px] flex flex-col gap-3 hover:border-[rgba(247,147,26,0.4)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200 min-h-[280px]"
+          className="group bg-[#161616] border border-[rgba(255,255,255,0.06)] rounded-[12px] p-[16px] flex flex-col gap-3 hover:border-[rgba(247,147,26,0.35)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200 min-h-[280px]"
         >
           {/* NOVA pattern header */}
           <CardHeader label="Featured Story" right="3/5" />
@@ -202,7 +202,7 @@ export function DashboardCards({
         {breakingArticle ? (
           <Link
             href={`/${breakingArticle.slug}`}
-            className="group bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] p-[16px] flex flex-col gap-3 hover:border-[rgba(247,147,26,0.4)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200 min-h-[280px]"
+            className="group bg-[#161616] border border-[rgba(255,255,255,0.06)] rounded-[12px] p-[16px] flex flex-col gap-3 hover:border-[rgba(247,147,26,0.35)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200 min-h-[280px]"
           >
             <CardHeader label="Breaking News" right="Live" rightColor="#00C896" pulse />
 
@@ -246,7 +246,7 @@ export function DashboardCards({
         )}
 
         {/* ── Card C — Market / Price Widget — NOVA radar visualization ── */}
-        <div className="bg-[#242424] border border-[#2A2A2A] rounded-[12px] p-[16px] flex flex-col min-h-[280px]">
+        <div className="bg-[#1E1E1E] border border-[rgba(255,255,255,0.06)] rounded-[12px] p-[16px] flex flex-col min-h-[280px]">
           <CardHeader label="Bitcoin Price" right="Live" rightColor="#00C896" pulse />
 
           <RadarViz
@@ -267,7 +267,7 @@ export function DashboardCards({
         </div>
 
         {/* ── Card D — News Timeline ── */}
-        <div className="bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] p-[16px] flex flex-col min-h-[280px]">
+        <div className="bg-[#161616] border border-[rgba(255,255,255,0.06)] rounded-[12px] p-[16px] flex flex-col min-h-[280px]">
           <CardHeader label="Latest News" right="Upcoming" />
 
           <ul className="flex flex-col flex-1">
