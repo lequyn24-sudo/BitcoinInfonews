@@ -18,12 +18,19 @@ export default async function HomePage() {
   const priceData = FALLBACK_PRICE_DATA;
   const marketStatus = getMarketStatus(priceData.change24h);
 
-  const featuredArticles = getFeaturedArticles(4);
+  const allArticles = getRecentArticles(10);
   const breakingArticle = getBreakingArticle();
-  const recentArticles = getRecentArticles(10);
+  const recentArticles = allArticles;
   const bitcoinArticles = getArticlesByCategory("bitcoin-news");
   const miningArticles = getArticlesByCategory("mining");
   const altcoinArticles = getArticlesByCategory("altcoin-news");
+
+  // Featured article = second bitcoin article (avoid duplicating the breaking article in Card A)
+  const featuredArticle =
+    bitcoinArticles.find((a) => !a.isBreaking) ?? bitcoinArticles[0] ?? allArticles[1];
+
+  // Breaking card = the actual breaking article (different from featured)
+  const breakingCard = breakingArticle ?? allArticles[0];
 
   return (
     <>
@@ -33,8 +40,8 @@ export default async function HomePage() {
       {/* Zone 3: Dashboard Cards — overlaps hero by 40px */}
       <div className="bg-[#0A0A0A] pb-0 overflow-visible">
         <DashboardCards
-          featuredArticle={featuredArticles[0]}
-          breakingArticle={breakingArticle}
+          featuredArticle={featuredArticle}
+          breakingArticle={breakingCard}
           priceData={priceData}
           recentArticles={recentArticles}
         />

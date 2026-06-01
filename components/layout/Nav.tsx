@@ -14,23 +14,6 @@ import {
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { label: "News", href: "/bitcoin-news" },
-  { label: "Bitcoin News", href: "/bitcoin-news" },
-  { label: "Altcoin News", href: "/altcoin-news" },
-  { label: "Mining", href: "/mining" },
-  {
-    label: "More",
-    href: "#",
-    children: [
-      { label: "Blockchain Events", href: "/blockchain-events" },
-      { label: "Top Projects", href: "/top-projects" },
-      { label: "Other", href: "/other" },
-      { label: "Sponsored", href: "/sponsored" },
-    ],
-  },
-];
-
 const mainNavLinks = [
   { label: "Bitcoin News", href: "/bitcoin-news" },
   { label: "Altcoin News", href: "/altcoin-news" },
@@ -91,10 +74,10 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-[14px] py-[8px] text-[14px] font-[500] transition-colors duration-150 rounded-[6px] whitespace-nowrap",
+                  "px-[14px] py-[7px] text-[14px] font-[500] transition-all duration-150 rounded-[6px] whitespace-nowrap",
                   isActive(link.href)
-                    ? "text-[#F7931A]"
-                    : "text-[#A0A0A0] hover:text-white"
+                    ? "text-[#F7931A] bg-[rgba(247,147,26,0.08)]"
+                    : "text-[#A0A0A0] hover:text-white hover:bg-[rgba(255,255,255,0.05)]"
                 )}
               >
                 {link.label}
@@ -107,11 +90,18 @@ export function Nav() {
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <button className="flex items-center gap-1 px-[14px] py-[8px] text-[14px] font-[500] text-[#A0A0A0] hover:text-white transition-colors duration-150">
+              <button
+                className={cn(
+                  "flex items-center gap-1 px-[14px] py-[7px] text-[14px] font-[500] transition-all duration-150 rounded-[6px]",
+                  mainNavLinks.slice(4).some((l) => isActive(l.href))
+                    ? "text-[#F7931A] bg-[rgba(247,147,26,0.08)]"
+                    : "text-[#A0A0A0] hover:text-white hover:bg-[rgba(255,255,255,0.05)]"
+                )}
+              >
                 More <CaretDown size={14} weight="bold" />
               </button>
               {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.4)] py-2 min-w-[160px] z-[70]">
+                <div className="absolute top-full left-0 mt-1 bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.4)] py-2 min-w-[180px] z-[70]">
                   {mainNavLinks.slice(4).map((link) => (
                     <Link
                       key={link.href}
@@ -134,47 +124,49 @@ export function Nav() {
           {/* Right actions */}
           <div className="flex items-center gap-2">
             {/* Search */}
-            <div className="relative flex items-center">
+            <div className="relative flex items-center gap-2">
               {searchOpen && (
                 <input
                   autoFocus
                   type="text"
                   placeholder="Search Bitcoin news…"
-                  className="w-[200px] lg:w-[260px] h-[36px] bg-[#1A1A1A] border border-[#F7931A] rounded-[8px] px-[12px] text-[14px] text-white placeholder:text-[#666] outline-none transition-all duration-200"
+                  className="w-[200px] lg:w-[240px] h-[34px] bg-[#1A1A1A] border border-[#F7931A] rounded-[8px] px-[12px] text-[13px] text-white placeholder:text-[#666] outline-none transition-all duration-200"
                   onBlur={() => setSearchOpen(false)}
                 />
               )}
+              {/* Bordered icon button — matches NOVA reference */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="w-[44px] h-[44px] flex items-center justify-center text-[#A0A0A0] hover:text-white transition-colors"
+                className="w-[34px] h-[34px] rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-[#444] transition-all"
                 aria-label="Search"
               >
-                <MagnifyingGlass size={20} />
+                <MagnifyingGlass size={16} />
               </button>
             </div>
 
+            {/* Bell — bordered circle */}
             <button
-              className="w-[44px] h-[44px] hidden xl:flex items-center justify-center text-[#A0A0A0] hover:text-white transition-colors relative"
+              className="w-[34px] h-[34px] hidden xl:flex rounded-full border border-[#2A2A2A] items-center justify-center text-[#A0A0A0] hover:text-white hover:border-[#444] transition-all relative"
               aria-label="Notifications"
             >
-              <Bell size={20} />
-              <span className="absolute top-[10px] right-[10px] w-[6px] h-[6px] bg-[#FF4D4D] rounded-full" />
+              <Bell size={16} />
+              <span className="absolute top-[7px] right-[7px] w-[5px] h-[5px] bg-[#FF4D4D] rounded-full ring-[1px] ring-[#111111]" />
             </button>
 
             <Link
               href="/sponsored"
-              className="hidden xl:flex items-center gap-1 h-[36px] px-[14px] bg-[#F7931A] text-[#0A0A0A] text-[12px] font-[600] uppercase tracking-[0.04em] rounded-[6px] hover:bg-[#e8841a] transition-colors"
+              className="hidden xl:flex items-center gap-1 h-[34px] px-[14px] bg-[#F7931A] text-[#0A0A0A] text-[12px] font-[600] uppercase tracking-[0.04em] rounded-[6px] hover:bg-[#e8841a] transition-colors"
             >
-              Advertise <ArrowUpRight size={14} weight="bold" />
+              Advertise <ArrowUpRight size={13} weight="bold" />
             </Link>
 
-            {/* Hamburger */}
+            {/* Hamburger — bordered square on mobile */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="xl:hidden w-[44px] h-[44px] flex items-center justify-center text-[#A0A0A0] hover:text-white transition-colors"
+              className="xl:hidden w-[34px] h-[34px] rounded-[6px] border border-[#2A2A2A] flex items-center justify-center text-[#A0A0A0] hover:text-white hover:border-[#444] transition-all"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <X size={24} /> : <List size={24} />}
+              {mobileOpen ? <X size={18} /> : <List size={18} />}
             </button>
           </div>
         </div>
@@ -199,10 +191,10 @@ export function Nav() {
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
-              className="w-[44px] h-[44px] flex items-center justify-center text-[#A0A0A0]"
+              className="w-[34px] h-[34px] rounded-full border border-[#2A2A2A] flex items-center justify-center text-[#A0A0A0]"
               aria-label="Close menu"
             >
-              <X size={24} />
+              <X size={18} />
             </button>
           </div>
 

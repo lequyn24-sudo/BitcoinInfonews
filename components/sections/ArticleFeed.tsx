@@ -18,8 +18,8 @@ function TopStoryCard({ article }: { article: Article }) {
       href={`/${article.slug}`}
       className="group block bg-[#1A1A1A] border border-[#2A2A2A] rounded-[12px] overflow-hidden hover:border-[rgba(247,147,26,0.4)] hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] transition-all duration-200"
     >
-      {/* Image */}
-      <div className="relative w-full aspect-[16/9] bg-[#242424]">
+      {/* Image — minimum height enforced for visual weight */}
+      <div className="relative w-full aspect-[16/9] min-h-[240px] bg-[#242424]">
         <Image
           src={article.imageUrl}
           alt={article.title}
@@ -31,10 +31,11 @@ function TopStoryCard({ article }: { article: Article }) {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, transparent 40%, rgba(10,10,10,0.9) 100%)",
+            background: "linear-gradient(to bottom, transparent 35%, rgba(10,10,10,0.92) 100%)",
           }}
         />
-        <div className="absolute top-3 left-3">
+        {/* Badge — absolute positioned inside image, z-indexed */}
+        <div className="absolute top-4 left-4 z-[2]">
           {article.isBreaking && <Badge variant="breaking">Breaking</Badge>}
           {article.isSponsored && <Badge variant="sponsored">Sponsored</Badge>}
           {!article.isBreaking && !article.isSponsored && (
