@@ -61,7 +61,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
   };
 
   return (
-    <div className="card-base p-4">
+    <div className="card-base">
       <h3
         className="mb-3 text-text-secondary"
         style={{

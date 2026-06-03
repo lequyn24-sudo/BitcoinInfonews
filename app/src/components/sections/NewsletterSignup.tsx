@@ -14,7 +14,7 @@ export function NewsletterSignup() {
   };
 
   return (
-    <div className="card-base p-4">
+    <div className="card-base">
       <h3
         className="mb-1 text-text-primary"
         style={{

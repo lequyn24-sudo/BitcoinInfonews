@@ -27,7 +27,7 @@ export function LivePriceWidget() {
   const isUp = priceData.change24h >= 0;
 
   return (
-    <div className="card-base p-4">
+    <div className="card-base">
       <div className="mb-3 flex items-center justify-between">
         <span
           style={{

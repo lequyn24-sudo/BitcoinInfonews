@@ -48,7 +48,7 @@ export function BitcoinEcosystem() {
         {/* Featured Article */}
         <Link
           href={`/${ecosystemArticle.slug}`}
-          className="card-base overflow-hidden block"
+          className="card-base overflow-hidden block !p-0"
         >
           <div
             className="relative"
@@ -94,7 +94,7 @@ export function BitcoinEcosystem() {
         </Link>
 
         {/* Bitcoin Stack Map */}
-        <div className="card-base p-4">
+        <div className="card-base">
           <h3
             className="mb-1"
             style={{
@@ -141,7 +141,7 @@ export function BitcoinEcosystem() {
         </div>
 
         {/* Bitcoin Capital Rotation Map */}
-        <div className="card-base p-4">
+        <div className="card-base">
           <h3
             className="mb-4"
             style={{

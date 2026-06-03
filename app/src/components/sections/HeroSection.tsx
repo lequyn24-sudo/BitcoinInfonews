@@ -89,7 +89,7 @@ export function HeroSection() {
           {/* Center Column — Regime Monitor + News Items */}
           <div className="flex flex-col gap-4 md:col-span-6 lg:col-span-4">
             {/* Bitcoin Regime Monitor */}
-            <div className="card-base p-4">
+            <div className="card-base">
               <h3
                 className="mb-3 text-center"
                 style={{
@@ -180,7 +180,7 @@ export function HeroSection() {
                 <Link
                   key={item.id}
                   href="#"
-                  className="card-base flex items-center gap-3 p-4 block cursor-pointer hover:translate-y-[-1px]"
+                  className="card-base flex items-center gap-3 block cursor-pointer hover:translate-y-[-1px]"
                 >
                   <div
                     className="shrink-0 overflow-hidden rounded-lg"
@@ -226,7 +226,7 @@ export function HeroSection() {
           {/* Right Column — Mempool Pressure + Signal Framework */}
           <div className="hidden flex-col gap-4 lg:flex lg:col-span-3">
             {/* Mempool Pressure */}
-            <div className="card-base p-4">
+            <div className="card-base">
               <h3
                 className="mb-3 text-center"
                 style={{
@@ -323,7 +323,7 @@ export function HeroSection() {
             </div>
 
             {/* Bitcoin Signal Framework */}
-            <div className="card-base p-4">
+            <div className="card-base">
               <h3
                 className="mb-3"
                 style={{

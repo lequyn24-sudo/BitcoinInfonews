@@ -40,7 +40,7 @@ export function BitcoinMining() {
         {/* Featured Article */}
         <Link
           href={`/${miningArticle.slug}`}
-          className="card-base overflow-hidden block"
+          className="card-base overflow-hidden block !p-0"
         >
           <div
             className="relative"
@@ -88,7 +88,7 @@ export function BitcoinMining() {
         {/* Miner Stress Dashboard + Related */}
         <div className="flex flex-col gap-4">
           {/* Miner Stress Dashboard */}
-          <div className="card-base p-4">
+          <div className="card-base">
             <h3
               className="mb-4"
               style={{
@@ -152,7 +152,7 @@ export function BitcoinMining() {
           {/* Related Coverage */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {miningRelated.map((item, idx) => (
-              <div key={idx} className="card-base p-3 md:p-4">
+              <div key={idx} className="card-base">
                 <span
                   className="mb-1 block text-text-secondary"
                   style={{

@@ -36,7 +36,7 @@ export function BitcoinMarkets() {
         {/* Featured Article */}
         <Link
           href={`/${marketsArticle.slug}`}
-          className="card-base overflow-hidden block"
+          className="card-base overflow-hidden block !p-0"
         >
           <div
             className="relative"
@@ -86,7 +86,7 @@ export function BitcoinMarkets() {
           {marketsRelated.map((item, idx) => (
             <div
               key={idx}
-              className="card-base flex flex-col justify-center p-4"
+              className="card-base flex flex-col justify-center"
             >
               <span
                 className="mb-1 text-text-secondary"

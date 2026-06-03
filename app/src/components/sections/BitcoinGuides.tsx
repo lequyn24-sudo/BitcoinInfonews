@@ -50,7 +50,7 @@ export function BitcoinGuides() {
         {/* Featured Guide */}
         <Link
           href={`/${guidesArticle.slug}`}
-          className="card-base overflow-hidden block"
+          className="card-base overflow-hidden block !p-0"
         >
           <div
             className="relative"
@@ -96,7 +96,7 @@ export function BitcoinGuides() {
         </Link>
 
         {/* Guide Use Case Path */}
-        <div className="card-base p-4">
+        <div className="card-base">
           <h3
             className="mb-1"
             style={{

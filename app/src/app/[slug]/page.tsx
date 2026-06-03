@@ -143,7 +143,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <LivePriceWidget />
 
                 {/* AS3 — Related Articles */}
-                <div className="card-base p-4">
+                <div className="card-base">
                   <h3
                     className="mb-3 text-text-secondary"
                     style={{

@@ -10,7 +10,7 @@ export function Sidebar() {
   return (
     <aside className="flex flex-col gap-4">
       {/* Reader Intent — Most Read */}
-      <div className="card-base p-4">
+      <div className="card-base">
         <h3
           className="mb-2"
           style={{
@@ -67,7 +67,7 @@ export function Sidebar() {
       </div>
 
       {/* Bitcoin Calendar Radar */}
-      <div className="card-base p-4">
+      <div className="card-base">
         <h3
           className="mb-3"
           style={{
@@ -122,7 +122,7 @@ export function Sidebar() {
       </div>
 
       {/* Newsletter Signup */}
-      <div className="card-base p-4">
+      <div className="card-base">
         <h3
           className="mb-2"
           style={{
