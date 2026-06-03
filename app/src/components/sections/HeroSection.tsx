@@ -9,21 +9,19 @@ import {
   ArrowUp,
   ArrowDown,
   ArrowRight,
-  TrendUp,
-  TrendDown,
 } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative w-full" style={{ background: '#0A0A0A' }}>
+    <section id="hero" className="relative w-full hero-glow-bg border-b border-border">
       <div className="mx-auto max-w-[1200px] px-6 py-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Left Column — Featured Article */}
           <div className="lg:col-span-5">
             <Link
               href={`/${heroArticle.slug}`}
-              className="relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block"
+              className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block"
               style={{
                 minHeight: '480px',
                 background: `linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${heroArticle.thumbnail})`,
@@ -61,6 +59,31 @@ export function HeroSection() {
                 >
                   {heroArticle.excerpt}
                 </p>
+
+                {/* Visual CTA Buttons matching Style Reference */}
+                <div className="flex gap-3 mt-5">
+                  <span
+                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-200"
+                    style={{
+                      height: '36px',
+                      padding: '0 16px',
+                      background: '#FFFFFF',
+                      color: '#0A0A0A',
+                    }}
+                  >
+                    Read Article ↗
+                  </span>
+                  <span
+                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider border border-white/20 text-white transition-all duration-200 group-hover:border-white/50"
+                    style={{
+                      height: '36px',
+                      padding: '0 16px',
+                      background: 'rgba(255,255,255,0.02)',
+                    }}
+                  >
+                    Markets +
+                  </span>
+                </div>
               </div>
             </Link>
           </div>

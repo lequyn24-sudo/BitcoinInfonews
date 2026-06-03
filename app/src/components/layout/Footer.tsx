@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import {
-  FacebookLogo,
-  XLogo,
   InstagramLogo,
-  ArrowRight,
 } from '@phosphor-icons/react/dist/ssr';
 
 export function Footer() {

@@ -1,7 +1,7 @@
 'use client';
 
 import { mostReadArticles, calendarEvents } from '@/lib/mock-data';
-import { ArrowRight, CalendarBlank } from '@phosphor-icons/react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 export function Sidebar() {
