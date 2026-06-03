@@ -1,0 +1,429 @@
+import {
+  heroArticle,
+  heroNewsItems,
+  regimeMonitor,
+  mempoolPressure,
+  signalFramework,
+} from '@/lib/mock-data';
+import {
+  ArrowUp,
+  ArrowDown,
+  ArrowRight,
+  TrendUp,
+  TrendDown,
+} from '@phosphor-icons/react/dist/ssr';
+
+export function HeroSection() {
+  return (
+    <section id="hero" className="relative w-full" style={{ background: '#0A0A0A' }}>
+      <div className="mx-auto max-w-[1200px] px-6 py-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          {/* Left Column — Featured Article */}
+          <div className="lg:col-span-5">
+            <div
+              className="relative flex flex-col justify-end overflow-hidden rounded-xl"
+              style={{
+                minHeight: '480px',
+                background: `linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${heroArticle.thumbnail})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <div className="relative z-10 p-6">
+                <span
+                  className="badge mb-4 inline-block"
+                  style={{
+                    background: 'rgba(247,147,26,0.15)',
+                    color: '#F7931A',
+                  }}
+                >
+                  {heroArticle.category}
+                </span>
+                <h1
+                  className="mb-4 text-text-primary"
+                  style={{
+                    fontSize: '28px',
+                    fontWeight: 700,
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {heroArticle.title}
+                </h1>
+                <p
+                  className="text-text-secondary"
+                  style={{
+                    fontSize: '14px',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {heroArticle.excerpt}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Column — Regime Monitor + News Items */}
+          <div className="flex flex-col gap-4 lg:col-span-4">
+            {/* Bitcoin Regime Monitor */}
+            <div className="card-base p-4">
+              <h3
+                className="mb-3 text-center"
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#F7931A',
+                }}
+              >
+                Bitcoin Regime Monitor
+              </h3>
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-text-secondary" style={{ fontSize: '12px' }}>
+                  Current Regime
+                </span>
+                <span className="text-text-secondary" style={{ fontSize: '12px' }}>
+                  Confidence
+                </span>
+              </div>
+              <div className="mb-3 flex items-center justify-between">
+                <span
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 700,
+                    color: '#00C896',
+                  }}
+                >
+                  {regimeMonitor.currentRegime}
+                </span>
+                <span
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: '#FFFFFF',
+                    fontFamily: 'var(--font-mono)',
+                  }}
+                >
+                  {regimeMonitor.confidence}%
+                </span>
+              </div>
+              {/* Progress Bar */}
+              <div
+                className="mb-3 h-1 w-full overflow-hidden rounded-full"
+                style={{ background: '#2A2A2A' }}
+              >
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${regimeMonitor.confidence}%`,
+                    background: '#00C896',
+                  }}
+                />
+              </div>
+              {/* Tabs */}
+              <div className="flex gap-1">
+                {regimeMonitor.tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    className="flex-1 rounded py-1 text-center transition-colors"
+                    style={{
+                      fontSize: '10px',
+                      fontWeight: 500,
+                      letterSpacing: '0.02em',
+                      background:
+                        tab === regimeMonitor.activeTab
+                          ? 'rgba(247,147,26,0.15)'
+                          : 'transparent',
+                      color:
+                        tab === regimeMonitor.activeTab ? '#F7931A' : '#A0A0A0',
+                    }}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+              <p
+                className="mt-2 text-center text-text-secondary"
+                style={{ fontSize: '11px' }}
+              >
+                Updated: {regimeMonitor.updatedDate}
+              </p>
+            </div>
+
+            {/* News Items */}
+            <div className="flex flex-col gap-3">
+              {heroNewsItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="card-base flex items-center gap-3 p-3"
+                >
+                  <div
+                    className="shrink-0 overflow-hidden rounded-lg"
+                    style={{
+                      width: '64px',
+                      height: '48px',
+                      background: `url(${item.thumbnail}) center/cover`,
+                    }}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <span
+                      className="mb-1 block"
+                      style={{
+                        fontSize: '10px',
+                        fontWeight: 600,
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        color: '#F7931A',
+                      }}
+                    >
+                      {item.category}
+                    </span>
+                    <p
+                      className="text-text-primary"
+                      style={{
+                        fontSize: '12px',
+                        fontWeight: 500,
+                        lineHeight: 1.4,
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column — Mempool Pressure + Signal Framework */}
+          <div className="flex flex-col gap-4 lg:col-span-3">
+            {/* Mempool Pressure */}
+            <div className="card-base p-4">
+              <h3
+                className="mb-3 text-center"
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#F7931A',
+                }}
+              >
+                Mempool Pressure
+              </h3>
+              <div className="mb-3 text-center">
+                <span
+                  style={{
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: '#FFB800',
+                  }}
+                >
+                  {mempoolPressure.status}
+                </span>
+              </div>
+              {/* Gauge visualization */}
+              <div className="relative mx-auto mb-4" style={{ width: '120px', height: '70px' }}>
+                <svg viewBox="0 0 120 70" className="w-full">
+                  {/* Background arc */}
+                  <path
+                    d="M 10 65 A 50 50 0 0 1 110 65"
+                    fill="none"
+                    stroke="#2A2A2A"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  {/* Colored arc segments */}
+                  <path
+                    d="M 10 65 A 50 50 0 0 1 35 20"
+                    fill="none"
+                    stroke="#00C896"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 35 20 A 50 50 0 0 1 60 12"
+                    fill="none"
+                    stroke="#FFB800"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 60 12 A 50 50 0 0 1 85 20"
+                    fill="none"
+                    stroke="#F7931A"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 85 20 A 50 50 0 0 1 110 65"
+                    fill="none"
+                    stroke="#FF4D4D"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  {/* Needle */}
+                  <line
+                    x1="60"
+                    y1="65"
+                    x2="80"
+                    y2="25"
+                    stroke="#FFFFFF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="60" cy="65" r="4" fill="#FFFFFF" />
+                </svg>
+              </div>
+              {/* Stats */}
+              <div className="flex flex-col gap-2">
+                {[
+                  { label: 'Fee Level', value: mempoolPressure.feeLevel },
+                  { label: 'Pending TX', value: mempoolPressure.pendingTx },
+                  { label: 'Block Fullness', value: mempoolPressure.blockFullness },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex items-center justify-between"
+                    style={{ fontSize: '12px' }}
+                  >
+                    <span className="text-text-secondary">{stat.label}</span>
+                    <span className="font-mono text-text-primary">{stat.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bitcoin Signal Framework */}
+            <div className="card-base p-4">
+              <h3
+                className="mb-3"
+                style={{
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: '#F7931A',
+                }}
+              >
+                Bitcoin Signal Framework
+              </h3>
+              {/* Primary Signals */}
+              <p
+                className="mb-2"
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: '#A0A0A0',
+                }}
+              >
+                Primary Signals
+              </p>
+              <div className="mb-3 flex flex-col gap-1">
+                {signalFramework.primary.map((signal) => (
+                  <div
+                    key={signal.name}
+                    className="flex items-center justify-between"
+                    style={{ fontSize: '12px' }}
+                  >
+                    <span className="text-text-secondary">{signal.name}</span>
+                    <div className="flex items-center gap-2">
+                      {signal.direction === 'up' ? (
+                        <ArrowUp size={12} color="#00C896" weight="bold" />
+                      ) : signal.direction === 'down' ? (
+                        <ArrowDown size={12} color="#FF4D4D" weight="bold" />
+                      ) : (
+                        <ArrowRight size={12} color="#A0A0A0" weight="bold" />
+                      )}
+                      <span
+                        style={{
+                          color:
+                            signal.direction === 'up'
+                              ? '#00C896'
+                              : signal.direction === 'down'
+                                ? '#FF4D4D'
+                                : '#A0A0A0',
+                        }}
+                      >
+                        {signal.strength}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Secondary / Noise */}
+              <p
+                className="mb-2"
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: '#A0A0A0',
+                }}
+              >
+                Secondary / Noise
+              </p>
+              <div className="mb-3 flex flex-col gap-1">
+                {signalFramework.secondary.map((signal) => (
+                  <div
+                    key={signal.name}
+                    className="flex items-center justify-between"
+                    style={{ fontSize: '12px' }}
+                  >
+                    <span className="text-text-secondary">{signal.name}</span>
+                    <div className="flex items-center gap-2">
+                      {signal.direction === 'up' ? (
+                        <ArrowUp size={12} color="#00C896" weight="bold" />
+                      ) : signal.direction === 'down' ? (
+                        <ArrowDown size={12} color="#FF4D4D" weight="bold" />
+                      ) : (
+                        <ArrowRight size={12} color="#A0A0A0" weight="bold" />
+                      )}
+                      <span
+                        style={{
+                          color:
+                            signal.direction === 'up'
+                              ? '#00C896'
+                              : signal.direction === 'down'
+                                ? '#FF4D4D'
+                                : '#A0A0A0',
+                        }}
+                      >
+                        {signal.strength}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Market Interpretation */}
+              <p
+                className="mb-2"
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: '#F7931A',
+                }}
+              >
+                Market Interpretation
+              </p>
+              <p className="text-text-secondary" style={{ fontSize: '12px', lineHeight: 1.5 }}>
+                {signalFramework.interpretation}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
