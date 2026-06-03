@@ -11,20 +11,22 @@ export function BitcoinMining() {
     <section id="mining" className="w-full">
       {/* Section Header */}
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
-        <div className="flex items-center gap-2">
+        <div>
+          <span className="section-eyebrow">Mining</span>
           <h2
             style={{
-              fontSize: '24px',
+              fontSize: '28px',
               fontWeight: 700,
               color: '#FFFFFF',
               lineHeight: 1.2,
+              letterSpacing: '-0.01em',
             }}
           >
             Bitcoin Mining
           </h2>
-          <span className="text-text-secondary" style={{ fontSize: '11px' }}>
-            A high-authority neckpunchingbreakdown, difficulty, hashrate, and miners.
-          </span>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
+            Difficulty, hashrate, miner economics, and on-chain fundamentals.
+          </p>
         </div>
         <a
           href="#"
@@ -40,7 +42,7 @@ export function BitcoinMining() {
         {/* Featured Article */}
         <Link
           href={`/${miningArticle.slug}`}
-          className="card-base overflow-hidden block !p-0"
+          className="card-featured overflow-hidden block"
         >
           <div
             className="relative"

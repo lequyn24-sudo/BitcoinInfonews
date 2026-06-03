@@ -22,17 +22,19 @@ export function BitcoinGuides() {
       {/* Section Header */}
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
         <div>
+          <span className="section-eyebrow">Guides</span>
           <h2
             style={{
-              fontSize: '24px',
+              fontSize: '28px',
               fontWeight: 700,
               color: '#FFFFFF',
               lineHeight: 1.2,
+              letterSpacing: '-0.01em',
             }}
           >
             Bitcoin Guides
           </h2>
-          <p className="mt-1 text-text-secondary" style={{ fontSize: '12px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
             Evergreen SEO cluster powered by /bitcoin-guides/wallets, /halving, /security, and /buying-bitcoin.
           </p>
         </div>
@@ -50,7 +52,7 @@ export function BitcoinGuides() {
         {/* Featured Guide */}
         <Link
           href={`/${guidesArticle.slug}`}
-          className="card-base overflow-hidden block !p-0"
+          className="card-featured overflow-hidden block"
         >
           <div
             className="relative"

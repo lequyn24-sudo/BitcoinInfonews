@@ -27,17 +27,19 @@ export function BitcoinEcosystem() {
       {/* Section Header */}
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
         <div>
+          <span className="section-eyebrow">Ecosystem</span>
           <h2
             style={{
-              fontSize: '24px',
+              fontSize: '28px',
               fontWeight: 700,
               color: '#FFFFFF',
               lineHeight: 1.2,
+              letterSpacing: '-0.01em',
             }}
           >
             Bitcoin Ecosystem
           </h2>
-          <p className="mt-1 text-text-secondary" style={{ fontSize: '12px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
             Long horizon narrative coverage for /bitcoin-ecosystem/lightning, /ordinals, /layer2, and /defi-on-bitcoin.
           </p>
         </div>
@@ -48,7 +50,7 @@ export function BitcoinEcosystem() {
         {/* Featured Article */}
         <Link
           href={`/${ecosystemArticle.slug}`}
-          className="card-base overflow-hidden block !p-0"
+          className="card-featured overflow-hidden block"
         >
           <div
             className="relative"

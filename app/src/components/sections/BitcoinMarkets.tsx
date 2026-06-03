@@ -8,17 +8,19 @@ export function BitcoinMarkets() {
       {/* Section Header */}
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
         <div>
+          <span className="section-eyebrow">Markets</span>
           <h2
             style={{
-              fontSize: '24px',
+              fontSize: '28px',
               fontWeight: 700,
               color: '#FFFFFF',
               lineHeight: 1.2,
+              letterSpacing: '-0.01em',
             }}
           >
             Bitcoin Markets
           </h2>
-          <p className="mt-1 text-text-secondary" style={{ fontSize: '12px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
             Built from /bitcoin-markets with trader intent, price structure, and cycle-focused coverage.
           </p>
         </div>
@@ -36,7 +38,7 @@ export function BitcoinMarkets() {
         {/* Featured Article */}
         <Link
           href={`/${marketsArticle.slug}`}
-          className="card-base overflow-hidden block !p-0"
+          className="card-featured overflow-hidden block"
         >
           <div
             className="relative"
