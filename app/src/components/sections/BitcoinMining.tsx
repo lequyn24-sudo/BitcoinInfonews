@@ -152,7 +152,7 @@ export function BitcoinMining() {
           {/* Related Coverage */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {miningRelated.map((item, idx) => (
-              <div key={idx} className="card-base p-3">
+              <div key={idx} className="card-base p-3 md:p-4">
                 <span
                   className="mb-1 block text-text-secondary"
                   style={{
