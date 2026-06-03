@@ -20,9 +20,9 @@ export function DashboardCards() {
   return (
     <section
       id="dashboard"
-      className="relative w-full"
+      className="relative z-10 w-full -mt-10"
     >
-      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 sm:px-6 pt-8 pb-10">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pb-12">
         {/* Section Header */}
         <div
           className="mb-4 flex items-center gap-2 border-b border-[rgba(255,255,255,0.08)] pb-3"

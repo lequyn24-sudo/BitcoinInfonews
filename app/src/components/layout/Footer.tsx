@@ -15,7 +15,7 @@ export function Footer() {
         boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
       }}
     >
-      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 py-12">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-16 pb-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Brand Column */}
           <div>

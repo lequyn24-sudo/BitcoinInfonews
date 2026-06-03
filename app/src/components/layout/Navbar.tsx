@@ -40,7 +40,7 @@ export function Navbar() {
         boxShadow: '0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.4)',
       }}
     >
-      <div className="mx-auto flex h-full w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] items-center justify-between px-6">
+      <div className="mx-auto flex h-full w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] items-center justify-between px-4 md:px-6 lg:px-8 xl:px-0">
         {/* Logo + Tagline */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center">

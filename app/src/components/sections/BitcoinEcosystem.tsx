@@ -44,7 +44,7 @@ export function BitcoinEcosystem() {
       </div>
 
       {/* Content Grid — 3 columns */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {/* Featured Article */}
         <Link
           href={`/${ecosystemArticle.slug}`}

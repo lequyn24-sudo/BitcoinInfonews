@@ -46,7 +46,7 @@ export function BitcoinGuides() {
       </div>
 
       {/* Content Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Featured Guide */}
         <Link
           href={`/${guidesArticle.slug}`}
