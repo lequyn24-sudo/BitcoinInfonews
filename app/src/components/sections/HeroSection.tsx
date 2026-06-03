@@ -180,7 +180,7 @@ export function HeroSection() {
                 <Link
                   key={item.id}
                   href="#"
-                  className="card-base flex items-center gap-3 p-3 block cursor-pointer hover:translate-y-[-1px]"
+                  className="card-base flex items-center gap-3 p-4 block cursor-pointer hover:translate-y-[-1px]"
                 >
                   <div
                     className="shrink-0 overflow-hidden rounded-lg"
@@ -349,7 +349,7 @@ export function HeroSection() {
               >
                 Primary Signals
               </p>
-              <div className="mb-3 flex flex-col gap-1">
+              <div className="mb-3 flex flex-col gap-2">
                 {signalFramework.primary.map((signal) => (
                   <div
                     key={signal.name}
@@ -395,7 +395,7 @@ export function HeroSection() {
               >
                 Secondary / Noise
               </p>
-              <div className="mb-3 flex flex-col gap-1">
+              <div className="mb-3 flex flex-col gap-2">
                 {signalFramework.secondary.map((signal) => (
                   <div
                     key={signal.name}

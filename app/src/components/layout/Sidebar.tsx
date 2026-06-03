@@ -8,11 +8,11 @@ export function Sidebar() {
   const [email, setEmail] = useState('');
 
   return (
-    <aside className="flex flex-col gap-4">
+    <aside className="flex flex-col gap-6">
       {/* Reader Intent — Most Read */}
-      <div className="card-base p-4">
+      <div className="card-base p-5">
         <h3
-          className="mb-1"
+          className="mb-2"
           style={{
             fontSize: '11px',
             fontWeight: 700,
@@ -67,7 +67,7 @@ export function Sidebar() {
       </div>
 
       {/* Bitcoin Calendar Radar */}
-      <div className="card-base p-4">
+      <div className="card-base p-5">
         <h3
           className="mb-3"
           style={{
@@ -122,9 +122,9 @@ export function Sidebar() {
       </div>
 
       {/* Newsletter Signup */}
-      <div className="card-base p-4">
+      <div className="card-base p-5">
         <h3
-          className="mb-1"
+          className="mb-2"
           style={{
             fontSize: '11px',
             fontWeight: 700,
