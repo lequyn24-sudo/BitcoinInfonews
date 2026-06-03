@@ -39,15 +39,14 @@ export default async function ArticlePage({ params }: PageProps) {
       <main style={{ background: '#0A0A0A' }} className="min-h-screen">
         {/* Zone A — Article Header */}
         <div
-          className="relative w-full overflow-hidden"
+          className="relative w-full overflow-hidden min-h-[320px] md:h-[400px] flex items-end py-8 md:py-0"
           style={{
-            height: '400px',
             background: `linear-gradient(to top, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${article.thumbnail})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          <div className="mx-auto flex h-full max-w-[1200px] flex-col justify-end px-6 pb-8">
+          <div className="mx-auto flex w-full max-w-[1200px] flex-col justify-end px-6 pb-8 pt-24 md:pt-0">
             <div className="max-w-[860px]">
               {/* Breadcrumb */}
               <div className="mb-4 flex items-center gap-1.5 font-mono text-[11px] text-text-secondary">
@@ -60,10 +59,8 @@ export default async function ArticlePage({ params }: PageProps) {
 
               {/* Title */}
               <h1
-                className="mb-4 text-text-primary"
+                className="mb-4 text-text-primary text-2xl sm:text-3xl md:text-4xl font-extrabold"
                 style={{
-                  fontSize: '36px',
-                  fontWeight: 700,
                   lineHeight: 1.2,
                   letterSpacing: '-0.02em',
                 }}

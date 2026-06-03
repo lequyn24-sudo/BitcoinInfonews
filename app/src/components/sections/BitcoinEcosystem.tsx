@@ -9,6 +9,7 @@ import {
   Bank,
   Users,
   ArrowRight,
+  ArrowDown,
   ArrowsClockwise,
 } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
@@ -24,7 +25,7 @@ export function BitcoinEcosystem() {
   return (
     <section id="ecosystem" className="w-full">
       {/* Section Header */}
-      <div className="mb-2 flex items-end justify-between border-b border-border pb-3">
+      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-border pb-3">
         <div>
           <h2
             style={{
@@ -154,9 +155,9 @@ export function BitcoinEcosystem() {
             Bitcoin Capital Rotation Map
           </h3>
           {/* Flow Diagram */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-2 sm:gap-1 md:gap-2">
             {capitalRotationFlow.map((step, idx) => (
-              <div key={step} className="flex items-center gap-2">
+              <div key={step} className="flex flex-col sm:flex-row items-center gap-2">
                 <div className="flex flex-col items-center">
                   <div
                     className="mb-1 flex items-center justify-center rounded-lg"
@@ -177,7 +178,10 @@ export function BitcoinEcosystem() {
                   </span>
                 </div>
                 {idx < capitalRotationFlow.length - 1 && (
-                  <ArrowRight size={14} className="mb-4 text-text-secondary" />
+                  <>
+                    <ArrowRight size={14} className="hidden sm:block text-text-secondary mb-4 sm:mb-0" />
+                    <ArrowDown size={14} className="block sm:hidden text-text-secondary my-1" />
+                  </>
                 )}
               </div>
             ))}

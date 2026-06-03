@@ -16,14 +16,13 @@ export function HeroSection() {
   return (
     <section id="hero" className="relative w-full hero-glow-bg border-b border-border">
       <div className="mx-auto max-w-[1200px] px-6 py-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           {/* Left Column — Featured Article */}
-          <div className="lg:col-span-5">
+          <div className="md:col-span-6 lg:col-span-5">
             <Link
               href={`/${heroArticle.slug}`}
-              className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block"
+              className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block min-h-[380px] sm:min-h-[480px]"
               style={{
-                minHeight: '480px',
                 background: `linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${heroArticle.thumbnail})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -40,10 +39,8 @@ export function HeroSection() {
                   {heroArticle.category}
                 </span>
                 <h1
-                  className="mb-4 text-text-primary"
+                  className="mb-4 text-text-primary text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-extrabold"
                   style={{
-                    fontSize: '28px',
-                    fontWeight: 700,
                     lineHeight: 1.15,
                     letterSpacing: '-0.02em',
                   }}
@@ -61,11 +58,10 @@ export function HeroSection() {
                 </p>
 
                 {/* Visual CTA Buttons matching Style Reference */}
-                <div className="flex gap-3 mt-5">
+                <div className="flex flex-wrap gap-3 mt-5">
                   <span
-                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-200"
+                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider transition-colors duration-200 h-[44px] sm:h-[36px]"
                     style={{
-                      height: '36px',
                       padding: '0 16px',
                       background: '#FFFFFF',
                       color: '#0A0A0A',
@@ -74,9 +70,8 @@ export function HeroSection() {
                     Read Article ↗
                   </span>
                   <span
-                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider border border-white/20 text-white transition-all duration-200 group-hover:border-white/50"
+                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider border border-white/20 text-white transition-all duration-200 group-hover:border-white/50 h-[44px] sm:h-[36px]"
                     style={{
-                      height: '36px',
                       padding: '0 16px',
                       background: 'rgba(255,255,255,0.02)',
                     }}
@@ -89,7 +84,7 @@ export function HeroSection() {
           </div>
 
           {/* Center Column — Regime Monitor + News Items */}
-          <div className="flex flex-col gap-4 lg:col-span-4">
+          <div className="flex flex-col gap-4 md:col-span-6 lg:col-span-4">
             {/* Bitcoin Regime Monitor */}
             <div className="card-base p-4">
               <h3
@@ -226,7 +221,7 @@ export function HeroSection() {
           </div>
 
           {/* Right Column — Mempool Pressure + Signal Framework */}
-          <div className="flex flex-col gap-4 lg:col-span-3">
+          <div className="hidden flex-col gap-4 lg:flex lg:col-span-3">
             {/* Mempool Pressure */}
             <div className="card-base p-4">
               <h3

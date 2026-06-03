@@ -40,11 +40,11 @@ export function NewsletterSignup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full h-[40px] bg-void border border-border rounded-lg px-3 text-xs text-white placeholder:text-text-tertiary focus:border-amber focus:outline-none"
+            className="w-full h-[44px] sm:h-[40px] bg-void border border-border rounded-lg px-3 text-xs text-white placeholder:text-text-tertiary focus:border-amber focus:outline-none"
           />
           <button
             type="submit"
-            className="w-full h-[40px] bg-white text-void rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors cursor-pointer"
+            className="w-full h-[44px] sm:h-[40px] bg-white text-void rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors cursor-pointer"
           >
             Join the Briefing
           </button>

@@ -10,7 +10,7 @@ export function BitcoinMining() {
   return (
     <section id="mining" className="w-full">
       {/* Section Header */}
-      <div className="mb-2 flex items-end justify-between border-b border-border pb-3">
+      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
           <h2
             style={{
@@ -101,7 +101,7 @@ export function BitcoinMining() {
             >
               Miner Stress Dashboard
             </h3>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <div>
                 <p className="text-text-secondary" style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                   Hashprice

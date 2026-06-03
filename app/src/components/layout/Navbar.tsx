@@ -48,7 +48,7 @@ export function Navbar() {
             />
           </Link>
           <span
-            className="hidden text-text-secondary xl:block"
+            className="hidden text-text-secondary lg:block"
             style={{
               fontSize: '10px',
               fontWeight: 500,
@@ -79,7 +79,7 @@ export function Navbar() {
         )}
 
         {/* Desktop Nav Links */}
-        <div className="hidden items-center gap-6 xl:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -97,7 +97,7 @@ export function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="flex items-center justify-center xl:hidden"
+          className="flex items-center justify-center lg:hidden"
           onClick={() => setMobileOpen(true)}
           aria-label="Open navigation menu"
           style={{ width: '44px', height: '44px' }}

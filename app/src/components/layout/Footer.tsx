@@ -55,7 +55,7 @@ export function Footer() {
                   <a
                     key={link}
                     href="#"
-                    className="text-text-primary transition-colors hover:text-amber"
+                    className="text-text-primary transition-colors hover:text-amber py-1.5 sm:py-0"
                     style={{ fontSize: '14px' }}
                   >
                     {link}
@@ -111,7 +111,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div
-          className="mt-8 flex items-center justify-between border-t border-border pt-6"
+          className="mt-8 flex flex-col gap-2 items-center text-center sm:flex-row sm:justify-between sm:text-left border-t border-border pt-6"
         >
           <p className="text-text-secondary" style={{ fontSize: '12px' }}>
             © 2025 InfoNews. All rights reserved.

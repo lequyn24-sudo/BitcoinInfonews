@@ -6,7 +6,7 @@ export function BitcoinMarkets() {
   return (
     <section id="markets" className="w-full">
       {/* Section Header */}
-      <div className="mb-2 flex items-end justify-between border-b border-border pb-3">
+      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-border pb-3">
         <div>
           <h2
             style={{
