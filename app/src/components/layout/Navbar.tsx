@@ -6,11 +6,11 @@ import { List, X } from '@phosphor-icons/react';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { label: 'Bitcoin News', href: '/#news' },
-  { label: 'Bitcoin Guides', href: '/#guides' },
-  { label: 'Bitcoin Markets', href: '/#markets' },
-  { label: 'Bitcoin Mining', href: '/#mining' },
-  { label: 'Bitcoin Ecosystem', href: '/#ecosystem' },
+  { label: 'News', href: '/#news' },
+  { label: 'Guides', href: '/#guides' },
+  { label: 'Markets', href: '/#markets' },
+  { label: 'Mining', href: '/#mining' },
+  { label: 'Ecosystem', href: '/#ecosystem' },
 ];
 
 export function Navbar() {
@@ -41,75 +41,63 @@ export function Navbar() {
       }}
     >
       <div className="mx-auto flex h-full w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] items-center justify-between px-4 md:px-6 lg:px-8 xl:px-0">
-        {/* Logo + Tagline */}
-        <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="InfoNews Logo"
-              width={140}
-              height={32}
-              className="h-8 w-auto"
-              priority
-            />
-          </Link>
-          <span
-            className="hidden text-text-secondary lg:block"
-            style={{
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Bitcoin. Maximalist With Deep Network Fundamentals Focus
-          </span>
-        </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            src="/images/logo.png"
+            alt="BitcoinInfoNews"
+            width={140}
+            height={32}
+            className="h-7 w-auto"
+            priority
+          />
+        </Link>
 
-        {/* Live Ticker */}
-        {priceData && (
-          <div className="hidden items-center gap-2 font-mono text-xs md:flex rounded px-3 py-1" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' } as React.CSSProperties}>
-            <span className="text-text-secondary">BTC:</span>
-            <span className="font-semibold text-white">
-              ${priceData.price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-            </span>
-            <span
-              className={`font-semibold ${
-                priceData.change24h >= 0 ? 'text-green' : 'text-red'
-              }`}
-            >
-              {priceData.change24h >= 0 ? '+' : ''}
-              {priceData.change24h.toFixed(2)}%
-            </span>
-          </div>
-        )}
-
-        {/* Desktop Nav Links */}
-        <div className="hidden items-center gap-6 lg:flex">
+        {/* Desktop Nav Links — center */}
+        <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-text-secondary transition-colors duration-150 hover:text-text-primary"
-              style={{
-                fontSize: '14px',
-                fontWeight: 500,
-              }}
+              className="rounded-md px-3 py-1.5 text-text-secondary transition-colors duration-150 hover:text-white hover:bg-white/5"
+              style={{ fontSize: '14px', fontWeight: 500 }}
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          className="flex items-center justify-center lg:hidden"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open navigation menu"
-          style={{ width: '44px', height: '44px' }}
-        >
-          <List size={24} weight="regular" color="#FFFFFF" />
-        </button>
+        {/* Right — BTC price + hamburger */}
+        <div className="flex items-center gap-3">
+          {/* Live Ticker */}
+          {priceData && (
+            <div
+              className="hidden items-center gap-2 font-mono text-xs md:flex rounded-md px-3 py-1.5"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.10)',
+              }}
+            >
+              <span className="text-text-secondary">BTC</span>
+              <span className="font-semibold text-white">
+                ${priceData.price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+              </span>
+              <span className={`font-semibold ${priceData.change24h >= 0 ? 'text-green' : 'text-red'}`}>
+                {priceData.change24h >= 0 ? '+' : ''}{priceData.change24h.toFixed(2)}%
+              </span>
+            </div>
+          )}
+
+          {/* Mobile Hamburger */}
+          <button
+            className="flex items-center justify-center lg:hidden"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open navigation menu"
+            style={{ width: '44px', height: '44px' }}
+          >
+            <List size={24} weight="regular" color="#FFFFFF" />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Overlay */}
@@ -140,20 +128,16 @@ export function Navbar() {
               <X size={24} weight="regular" color="#FFFFFF" />
             </button>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col px-4 pt-4 gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center border-b border-border px-6 text-text-primary"
-                style={{
-                  height: '56px',
-                  fontSize: '18px',
-                  fontWeight: 500,
-                }}
+                className="flex items-center rounded-lg px-4 text-text-primary hover:bg-white/5 transition-colors"
+                style={{ height: '52px', fontSize: '16px', fontWeight: 500 }}
               >
-                {link.label}
+                Bitcoin {link.label}
               </Link>
             ))}
           </div>
