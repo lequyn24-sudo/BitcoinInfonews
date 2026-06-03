@@ -1,19 +1,32 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { List, X } from '@phosphor-icons/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { label: 'Bitcoin News', href: '#news' },
-  { label: 'Bitcoin Guides', href: '#guides' },
-  { label: 'Bitcoin Markets', href: '#markets' },
-  { label: 'Bitcoin Mining', href: '#mining' },
-  { label: 'Bitcoin Ecosystem', href: '#ecosystem' },
+  { label: 'Bitcoin News', href: '/#news' },
+  { label: 'Bitcoin Guides', href: '/#guides' },
+  { label: 'Bitcoin Markets', href: '/#markets' },
+  { label: 'Bitcoin Mining', href: '/#mining' },
+  { label: 'Bitcoin Ecosystem', href: '/#ecosystem' },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [priceData, setPriceData] = useState<{ price: number; change24h: number } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/price')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && !data.error) {
+          setPriceData({ price: data.price, change24h: data.change24h });
+        }
+      })
+      .catch((err) => console.error('Error fetching price in Navbar:', err));
+  }, []);
 
   return (
     <nav
@@ -24,14 +37,16 @@ export function Navbar() {
       <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-6">
         {/* Logo + Tagline */}
         <div className="flex items-center gap-3">
-          <Image
-            src="/images/logo.png"
-            alt="InfoNews Logo"
-            width={140}
-            height={32}
-            className="h-8 w-auto"
-            priority
-          />
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.png"
+              alt="InfoNews Logo"
+              width={140}
+              height={32}
+              className="h-8 w-auto"
+              priority
+            />
+          </Link>
           <span
             className="hidden text-text-secondary xl:block"
             style={{
@@ -45,10 +60,28 @@ export function Navbar() {
           </span>
         </div>
 
+        {/* Live Ticker */}
+        {priceData && (
+          <div className="hidden items-center gap-2 font-mono text-xs md:flex rounded bg-void/50 border border-border px-3 py-1">
+            <span className="text-text-secondary">BTC:</span>
+            <span className="font-semibold text-white">
+              ${priceData.price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+            </span>
+            <span
+              className={`font-semibold ${
+                priceData.change24h >= 0 ? 'text-green' : 'text-red'
+              }`}
+            >
+              {priceData.change24h >= 0 ? '+' : ''}
+              {priceData.change24h.toFixed(2)}%
+            </span>
+          </div>
+        )}
+
         {/* Desktop Nav Links */}
         <div className="hidden items-center gap-6 xl:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               className="text-text-secondary transition-colors duration-150 hover:text-text-primary"
@@ -58,7 +91,7 @@ export function Navbar() {
               }}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -83,13 +116,15 @@ export function Navbar() {
             className="flex items-center justify-between border-b border-border px-6"
             style={{ height: '56px' }}
           >
-            <Image
-              src="/images/logo.png"
-              alt="InfoNews Logo"
-              width={120}
-              height={28}
-              className="h-7 w-auto"
-            />
+            <Link href="/" onClick={() => setMobileOpen(false)}>
+              <Image
+                src="/images/logo.png"
+                alt="InfoNews Logo"
+                width={120}
+                height={28}
+                className="h-7 w-auto"
+              />
+            </Link>
             <button
               onClick={() => setMobileOpen(false)}
               aria-label="Close navigation menu"
@@ -101,7 +136,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
@@ -113,7 +148,7 @@ export function Navbar() {
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

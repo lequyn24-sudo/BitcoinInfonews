@@ -12,6 +12,7 @@ import {
   TrendUp,
   TrendDown,
 } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 
 export function HeroSection() {
   return (
@@ -20,8 +21,9 @@ export function HeroSection() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Left Column — Featured Article */}
           <div className="lg:col-span-5">
-            <div
-              className="relative flex flex-col justify-end overflow-hidden rounded-xl"
+            <Link
+              href={`/${heroArticle.slug}`}
+              className="relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block"
               style={{
                 minHeight: '480px',
                 background: `linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${heroArticle.thumbnail})`,
@@ -60,7 +62,7 @@ export function HeroSection() {
                   {heroArticle.excerpt}
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Center Column — Regime Monitor + News Items */}
@@ -154,9 +156,10 @@ export function HeroSection() {
             {/* News Items */}
             <div className="flex flex-col gap-3">
               {heroNewsItems.map((item) => (
-                <div
+                <Link
                   key={item.id}
-                  className="card-base flex items-center gap-3 p-3"
+                  href="#"
+                  className="card-base flex items-center gap-3 p-3 block cursor-pointer"
                 >
                   <div
                     className="shrink-0 overflow-hidden rounded-lg"
@@ -194,7 +197,7 @@ export function HeroSection() {
                       {item.title}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

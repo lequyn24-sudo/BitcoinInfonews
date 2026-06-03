@@ -4,6 +4,7 @@ import {
   miningRelated,
 } from '@/lib/mock-data';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 
 export function BitcoinMining() {
   return (
@@ -37,7 +38,10 @@ export function BitcoinMining() {
       {/* Content Grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Featured Article */}
-        <div className="card-base overflow-hidden">
+        <Link
+          href={`/${miningArticle.slug}`}
+          className="card-base overflow-hidden block"
+        >
           <div
             className="relative"
             style={{
@@ -79,7 +83,7 @@ export function BitcoinMining() {
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Miner Stress Dashboard + Related */}
         <div className="flex flex-col gap-4">

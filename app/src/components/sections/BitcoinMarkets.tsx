@@ -1,5 +1,6 @@
 import { marketsArticle, marketsRelated } from '@/lib/mock-data';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 
 export function BitcoinMarkets() {
   return (
@@ -33,7 +34,10 @@ export function BitcoinMarkets() {
       {/* Content Grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Featured Article */}
-        <div className="card-base overflow-hidden">
+        <Link
+          href={`/${marketsArticle.slug}`}
+          className="card-base overflow-hidden block"
+        >
           <div
             className="relative"
             style={{
@@ -75,7 +79,7 @@ export function BitcoinMarkets() {
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Related Coverage */}
         <div className="flex flex-col gap-4">

@@ -7,6 +7,7 @@ import {
   CaretRight,
   ArrowRight,
 } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 
 const pathIcons: Record<string, React.ReactNode> = {
   rocket: <RocketLaunch size={20} weight="regular" />,
@@ -47,7 +48,10 @@ export function BitcoinGuides() {
       {/* Content Grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Featured Guide */}
-        <div className="card-base overflow-hidden">
+        <Link
+          href={`/${guidesArticle.slug}`}
+          className="card-base overflow-hidden block"
+        >
           <div
             className="relative"
             style={{
@@ -89,7 +93,7 @@ export function BitcoinGuides() {
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Guide Use Case Path */}
         <div className="card-base p-4">

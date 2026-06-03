@@ -11,6 +11,7 @@ import {
   ArrowRight,
   ArrowsClockwise,
 } from '@phosphor-icons/react/dist/ssr';
+import Link from 'next/link';
 
 const stackIcons: Record<string, React.ReactNode> = {
   cube: <Cube size={18} weight="regular" />,
@@ -44,7 +45,10 @@ export function BitcoinEcosystem() {
       {/* Content Grid — 3 columns */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Featured Article */}
-        <div className="card-base overflow-hidden">
+        <Link
+          href={`/${ecosystemArticle.slug}`}
+          className="card-base overflow-hidden block"
+        >
           <div
             className="relative"
             style={{
@@ -86,7 +90,7 @@ export function BitcoinEcosystem() {
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Bitcoin Stack Map */}
         <div className="card-base p-4">
