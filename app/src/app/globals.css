@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 @theme {
   /* Surface Colors */
   --color-void: #0A0A0A;
@@ -28,12 +33,12 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Custom Breakpoints */
-  --breakpoint-xs: 375px;
-  --breakpoint-sm: 480px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1440px;
+  --breakpoint-xs: 23.4375rem; /* 375px */
+  --breakpoint-sm: 30rem;      /* 480px */
+  --breakpoint-md: 48rem;      /* 768px */
+  --breakpoint-lg: 64rem;      /* 1024px */
+  --breakpoint-xl: 80rem;      /* 1280px */
+  --breakpoint-2xl: 90rem;     /* 1440px */
 }
 
 /* Base Reset */
@@ -50,9 +55,12 @@ html {
 body {
   font-family: var(--font-sans);
   background-color: var(--color-void);
-  background-image: 
-    radial-gradient(circle at 80% 20%, rgba(59, 158, 255, 0.06) 0%, transparent 40%),
-    radial-gradient(circle at 20% 70%, rgba(247, 147, 26, 0.04) 0%, transparent 35%);
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(247, 147, 26, 0.13) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 10%, rgba(59, 158, 255, 0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 75% 75%, rgba(139, 92, 246, 0.09) 0%, transparent 45%),
+    radial-gradient(ellipse at 10% 85%, rgba(0, 200, 150, 0.07) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 45%, rgba(247, 147, 26, 0.04) 0%, transparent 60%);
   background-attachment: fixed;
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
@@ -80,25 +88,28 @@ body {
 
 /* Utility Classes */
 .glass-card {
-  background: rgba(17, 17, 17, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .card-base {
-  background: rgba(26, 26, 26, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  transition: border-color 250ms ease, box-shadow 250ms ease, background-color 250ms ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 250ms ease, box-shadow 250ms ease, background 250ms ease;
 }
 
 .card-base:hover {
-  background: rgba(26, 26, 26, 0.6);
-  border-color: rgba(247, 147, 26, 0.4);
-  box-shadow: 0 0 24px rgba(247, 147, 26, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(247, 147, 26, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(247, 147, 26, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .section-header-label {
@@ -205,10 +216,7 @@ body {
 
 .hero-glow-bg {
   position: relative;
-  background-color: #0A0A0A;
-  background-image: 
-    radial-gradient(circle at 75% 30%, rgba(247, 147, 26, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 25% 70%, rgba(59, 158, 255, 0.02) 0%, transparent 45%);
+  background-color: transparent;
 }
 
 

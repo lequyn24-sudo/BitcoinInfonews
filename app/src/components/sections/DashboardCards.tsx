@@ -21,12 +21,11 @@ export function DashboardCards() {
     <section
       id="dashboard"
       className="relative w-full"
-      style={{ background: '#0A0A0A' }}
     >
-      <div className="mx-auto max-w-[1200px] px-6 pb-8">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 pb-8">
         {/* Section Header */}
         <div
-          className="mb-4 flex items-center gap-2 border-b border-border pb-3"
+          className="mb-4 flex items-center gap-2 border-b border-[rgba(255,255,255,0.08)] pb-3"
         >
           <h2
             style={{

@@ -46,7 +46,7 @@ export default async function ArticlePage({ params }: PageProps) {
             backgroundPosition: 'center',
           }}
         >
-          <div className="mx-auto flex w-full max-w-[1200px] flex-col justify-end px-6 pb-8 pt-24 md:pt-0">
+          <div className="mx-auto flex w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] flex-col justify-end px-6 pb-8 pt-24 md:pt-0">
             <div className="max-w-[860px]">
               {/* Breadcrumb */}
               <div className="mb-4 flex items-center gap-1.5 font-mono text-[11px] text-text-secondary">
@@ -83,7 +83,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </div>
 
         {/* Zone B — Article Body + Sidebar */}
-        <div className="mx-auto max-w-[1200px] px-6 py-12">
+        <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 py-12">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Left Column - Article Body */}
             <div className="lg:col-span-8">

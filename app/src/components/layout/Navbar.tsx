@@ -31,10 +31,16 @@ export function Navbar() {
   return (
     <nav
       id="navbar"
-      className="sticky top-0 z-100 w-full border-b border-border"
-      style={{ background: '#111111', height: '64px' }}
+      className="sticky top-0 z-100 w-full border-b border-[rgba(255,255,255,0.08)]"
+      style={{
+        background: 'rgba(10, 10, 10, 0.65)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        height: '64px',
+        boxShadow: '0 1px 0 rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.4)',
+      }}
     >
-      <div className="mx-auto flex h-full max-w-[1200px] items-center justify-between px-6">
+      <div className="mx-auto flex h-full w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] items-center justify-between px-6">
         {/* Logo + Tagline */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center">
@@ -62,7 +68,7 @@ export function Navbar() {
 
         {/* Live Ticker */}
         {priceData && (
-          <div className="hidden items-center gap-2 font-mono text-xs md:flex rounded bg-void/50 border border-border px-3 py-1">
+          <div className="hidden items-center gap-2 font-mono text-xs md:flex rounded px-3 py-1" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' } as React.CSSProperties}>
             <span className="text-text-secondary">BTC:</span>
             <span className="font-semibold text-white">
               ${priceData.price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
@@ -110,7 +116,7 @@ export function Navbar() {
       {mobileOpen && (
         <div
           className="fixed inset-0 z-110 flex flex-col"
-          style={{ background: 'rgba(10,10,10,0.98)' }}
+          style={{ background: 'rgba(8, 8, 8, 0.92)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
         >
           <div
             className="flex items-center justify-between border-b border-border px-6"

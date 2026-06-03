@@ -22,8 +22,7 @@ export default function Home() {
 
         {/* Zone 4 — Main Content Grid with Sidebar */}
         <div
-          className="mx-auto max-w-[1200px] px-6 pb-12"
-          style={{ background: '#0A0A0A' }}
+          className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 pb-12"
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Left Content Column */}

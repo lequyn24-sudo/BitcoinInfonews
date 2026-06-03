@@ -14,21 +14,21 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative w-full hero-glow-bg border-b border-border">
-      <div className="mx-auto max-w-[1200px] px-6 py-8">
+    <section id="hero" className="relative w-full hero-glow-bg border-b border-[rgba(255,255,255,0.08)]">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 py-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           {/* Left Column — Featured Article */}
           <div className="md:col-span-6 lg:col-span-5">
             <Link
               href={`/${heroArticle.slug}`}
-              className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border transition-all duration-200 hover:border-amber/40 hover:shadow-[0_0_24px_rgba(247,147,26,0.08)] block min-h-[380px] sm:min-h-[480px]"
+              className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-[rgba(255,255,255,0.10)] transition-all duration-200 hover:border-[rgba(247,147,26,0.45)] hover:shadow-[0_0_40px_rgba(247,147,26,0.12)] block min-h-[380px] sm:min-h-[480px]"
               style={{
-                background: `linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0.6) 100%), url(${heroArticle.thumbnail})`,
+                background: `linear-gradient(to top, rgba(6,6,6,0.96) 0%, rgba(10,10,10,0.30) 55%, rgba(10,10,10,0.55) 100%), url(${heroArticle.thumbnail})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
             >
-              <div className="relative z-10 p-6">
+              <div className="relative z-10 p-6" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)', backdropFilter: 'blur(0px)' }}>
                 <span
                   className="badge mb-4 inline-block"
                   style={{
@@ -70,10 +70,13 @@ export function HeroSection() {
                     Read Article ↗
                   </span>
                   <span
-                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider border border-white/20 text-white transition-all duration-200 group-hover:border-white/50 h-[44px] sm:h-[36px]"
+                    className="inline-flex items-center justify-center rounded-lg font-mono text-xs font-bold uppercase tracking-wider text-white transition-all duration-200 h-[44px] sm:h-[36px]"
                     style={{
                       padding: '0 16px',
-                      background: 'rgba(255,255,255,0.02)',
+                      background: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
                     }}
                   >
                     Markets +
@@ -177,7 +180,7 @@ export function HeroSection() {
                 <Link
                   key={item.id}
                   href="#"
-                  className="card-base flex items-center gap-3 p-3 block cursor-pointer"
+                  className="card-base flex items-center gap-3 p-3 block cursor-pointer hover:translate-y-[-1px]"
                 >
                   <div
                     className="shrink-0 overflow-hidden rounded-lg"

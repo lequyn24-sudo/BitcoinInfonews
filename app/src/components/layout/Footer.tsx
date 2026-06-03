@@ -7,10 +7,15 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="w-full border-t border-border"
-      style={{ background: '#0A0A0A' }}
+      className="w-full border-t border-[rgba(255,255,255,0.08)]"
+      style={{
+        background: 'rgba(6, 6, 6, 0.80)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)',
+      }}
     >
-      <div className="mx-auto max-w-[1200px] px-6 py-12">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-6 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Brand Column */}
           <div>
@@ -111,7 +116,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div
-          className="mt-8 flex flex-col gap-2 items-center text-center sm:flex-row sm:justify-between sm:text-left border-t border-border pt-6"
+          className="mt-8 flex flex-col gap-2 items-center text-center sm:flex-row sm:justify-between sm:text-left border-t border-[rgba(255,255,255,0.08)] pt-6"
         >
           <p className="text-text-secondary" style={{ fontSize: '12px' }}>
             © 2025 InfoNews. All rights reserved.
