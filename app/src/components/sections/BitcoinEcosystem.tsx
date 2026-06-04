@@ -39,7 +39,7 @@ export function BitcoinEcosystem() {
           >
             Bitcoin Ecosystem
           </h2>
-          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '14px', lineHeight: '1.6' }}>
             Long horizon narrative coverage for /bitcoin-ecosystem/lightning, /ordinals, /layer2, and /defi-on-bitcoin.
           </p>
         </div>

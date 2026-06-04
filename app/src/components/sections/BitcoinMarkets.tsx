@@ -20,7 +20,7 @@ export function BitcoinMarkets() {
           >
             Bitcoin Markets
           </h2>
-          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '14px', lineHeight: '1.6' }}>
             Built from /bitcoin-markets with trader intent, price structure, and cycle-focused coverage.
           </p>
         </div>

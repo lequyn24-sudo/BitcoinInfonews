@@ -26,7 +26,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Left Content Column */}
-            <div className="flex flex-col gap-12 lg:col-span-8">
+            <div className="flex flex-col gap-16 lg:col-span-8">
               <BitcoinMarkets />
               <BitcoinGuides />
               <BitcoinMining />

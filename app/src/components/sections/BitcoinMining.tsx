@@ -24,7 +24,7 @@ export function BitcoinMining() {
           >
             Bitcoin Mining
           </h2>
-          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '14px', lineHeight: '1.6' }}>
             Difficulty, hashrate, miner economics, and on-chain fundamentals.
           </p>
         </div>

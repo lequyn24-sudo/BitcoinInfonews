@@ -34,7 +34,7 @@ export function BitcoinGuides() {
           >
             Bitcoin Guides
           </h2>
-          <p className="mt-2 text-text-secondary" style={{ fontSize: '13px' }}>
+          <p className="mt-2 text-text-secondary" style={{ fontSize: '14px', lineHeight: '1.6' }}>
             Evergreen SEO cluster powered by /bitcoin-guides/wallets, /halving, /security, and /buying-bitcoin.
           </p>
         </div>
