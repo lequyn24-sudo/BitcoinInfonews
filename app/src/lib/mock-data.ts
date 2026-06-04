@@ -386,11 +386,11 @@ export const capitalRotationFlow = [
 
 // Sidebar - Most Read
 export const mostReadArticles = [
-  'Bitcoin ETF Flows Turn Positive Again As Demand Broadens',
-  'What The Next Bitcoin Difficulty Adjustment Could Signal',
-  'Why Bitcoin Dominance Still Matters In A Risk-On Market',
-  'Best Bitcoin Wallets For Security-First Users',
-  'Bitcoin Layer2 Activity Is Rising But Fragmentation Remains',
+  { title: 'Bitcoin ETF Flows Turn Positive Again As Demand Broadens', thumbnail: '/images/thumbnails/vaneck-debuts-spot-bnb-etf-vbnb-on-nasdaq-thumbnail-768x512.jpg' },
+  { title: 'What The Next Bitcoin Difficulty Adjustment Could Signal', thumbnail: '/images/thumbnails/20260522-175919_1779444420kVIOzuBKeB-768x403.jpg' },
+  { title: 'Why Bitcoin Dominance Still Matters In A Risk-On Market', thumbnail: '/images/thumbnails/1280X1280_1779175249LXbBvv3v8j-768x432.png' },
+  { title: 'Best Bitcoin Wallets For Security-First Users', thumbnail: '/images/thumbnails/us-seizes-1-billion-in-crypto-from-iran-thumbnail-768x512.jpg' },
+  { title: 'Bitcoin Layer2 Activity Is Rising But Fragmentation Remains', thumbnail: '/images/thumbnails/1280X1280_17792638184yOu83FmUb-768x432.png' },
 ];
 
 // Sidebar - Press Releases
@@ -399,21 +399,25 @@ export const pressReleases = [
     company: 'Blockstream',
     headline: 'Blockstream Jade Plus Hardware Wallet Now Available With Air-Gap Multisig',
     date: 'Jun 1, 2025',
+    thumbnail: '/images/thumbnails/strategic-bitcoin-reserve-bill-drops-1-million-btc-target-adds-20-year-lockup-thumbnail.jpg',
   },
   {
     company: 'Lightning Labs',
     headline: 'Lightning Labs Releases LND 0.18 With Improved Routing And Channel Management',
     date: 'May 30, 2025',
+    thumbnail: '/images/thumbnails/kraken-us-compliant-bitcoin-perpetual-contracts-launch-30-days-thumbnail-768x512.jpg',
   },
   {
     company: 'Kraken',
     headline: 'Kraken Launches US-Compliant Bitcoin Perpetual Contracts After Regulatory Approval',
     date: 'May 28, 2025',
+    thumbnail: '/images/thumbnails/vaneck-ranking-xrp-ledger-ahead-jpmorgan-kinexys-corporate-blockchain-comparison-thumbnail-2-768x512.jpg',
   },
   {
     company: 'VanEck',
     headline: 'VanEck Debuts Spot BNB ETF (VBNB) On Nasdaq, Expanding Crypto ETF Suite',
     date: 'May 26, 2025',
+    thumbnail: '/images/thumbnails/vaneck-debuts-spot-bnb-etf-vbnb-on-nasdaq-thumbnail-768x512.jpg',
   },
 ];
 
@@ -423,16 +427,19 @@ export const sidebarSponsored = [
     label: 'SPONSORED',
     title: 'Understanding Bitcoin Custody: A Guide For Institutional Investors',
     href: '/understanding-bitcoin-custody-guide-institutional',
+    thumbnail: '/images/thumbnails/cyble-malware-campaign-targeting-180-banking-financial-crypto-apps-thumbnail-768x512.jpg',
   },
   {
     label: 'SPONSORED',
     title: 'The Case For A 5% Bitcoin Allocation In A Traditional Portfolio',
     href: '/5-percent-bitcoin-allocation-case',
+    thumbnail: '/images/thumbnails/sui-mainnet-suffers-multiple-disruptions-thumbnail-1-768x512.jpg',
   },
   {
     label: 'SPONSORED',
     title: 'Bitcoin Mining Economics: Post-Halving Profitability Guide',
     href: '/bitcoin-mining-post-halving-profitability',
+    thumbnail: '/images/thumbnails/PR_720p_1774355782kuCznX1THu_1779776140ln7AFoDr7x-768x461.jpg',
   },
 ];
 

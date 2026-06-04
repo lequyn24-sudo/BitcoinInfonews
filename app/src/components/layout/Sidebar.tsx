@@ -38,28 +38,27 @@ export function Sidebar() {
             <a
               key={idx}
               href="#"
-              className="group flex items-start gap-3 transition-colors"
+              className="group flex items-center gap-3 transition-colors"
             >
               <span
                 className="shrink-0 font-mono"
-                style={{
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  color: '#F7931A',
-                  width: '20px',
-                }}
+                style={{ fontSize: '13px', fontWeight: 700, color: '#F7931A', width: '16px' }}
               >
                 {idx + 1}
               </span>
+              <div
+                className="shrink-0 rounded overflow-hidden"
+                style={{
+                  width: '56px', height: '40px',
+                  background: `url(${article.thumbnail}) center/cover no-repeat`,
+                  flexShrink: 0,
+                }}
+              />
               <span
                 className="text-text-secondary transition-colors group-hover:text-text-primary"
-                style={{
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  lineHeight: 1.4,
-                }}
+                style={{ fontSize: '12px', fontWeight: 500, lineHeight: 1.4 }}
               >
-                {article}
+                {article.title}
               </span>
             </a>
           ))}
@@ -140,25 +139,29 @@ export function Sidebar() {
             <a
               key={idx}
               href={item.href}
-              className="group flex flex-col gap-1 transition-colors"
+              className="group flex items-center gap-3 transition-colors"
             >
-              <span
+              <div
+                className="shrink-0 rounded overflow-hidden"
                 style={{
-                  fontSize: '9px',
-                  fontWeight: 700,
-                  letterSpacing: '0.07em',
-                  textTransform: 'uppercase',
-                  color: '#FFB800',
+                  width: '56px', height: '40px',
+                  background: `url(${item.thumbnail}) center/cover no-repeat`,
                 }}
-              >
-                {item.label}
-              </span>
-              <span
-                className="text-text-secondary transition-colors group-hover:text-text-primary"
-                style={{ fontSize: '13px', fontWeight: 500, lineHeight: 1.4 }}
-              >
-                {item.title}
-              </span>
+              />
+              <div className="min-w-0">
+                <span
+                  className="block mb-0.5"
+                  style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: '#FFB800' }}
+                >
+                  {item.label}
+                </span>
+                <span
+                  className="text-text-secondary transition-colors group-hover:text-text-primary"
+                  style={{ fontSize: '12px', fontWeight: 500, lineHeight: 1.4 }}
+                >
+                  {item.title}
+                </span>
+              </div>
             </a>
           ))}
         </div>
@@ -190,31 +193,32 @@ export function Sidebar() {
             <a
               key={idx}
               href="#"
-              className="group flex flex-col gap-1 transition-colors"
+              className="group flex items-start gap-3 transition-colors"
             >
-              <span
+              <div
+                className="shrink-0 rounded overflow-hidden mt-0.5"
                 style={{
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  color: '#3B9EFF',
+                  width: '56px', height: '40px',
+                  background: `url(${pr.thumbnail}) center/cover no-repeat`,
                 }}
-              >
-                {pr.company}
-              </span>
-              <span
-                className="text-text-secondary transition-colors group-hover:text-text-primary"
-                style={{ fontSize: '13px', fontWeight: 500, lineHeight: 1.4 }}
-              >
-                {pr.headline}
-              </span>
-              <span
-                className="text-text-secondary"
-                style={{ fontSize: '11px' }}
-              >
-                {pr.date}
-              </span>
+              />
+              <div className="min-w-0">
+                <span
+                  className="block mb-0.5"
+                  style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#3B9EFF' }}
+                >
+                  {pr.company}
+                </span>
+                <span
+                  className="text-text-secondary transition-colors group-hover:text-text-primary block"
+                  style={{ fontSize: '12px', fontWeight: 500, lineHeight: 1.4 }}
+                >
+                  {pr.headline}
+                </span>
+                <span className="text-text-secondary" style={{ fontSize: '11px' }}>
+                  {pr.date}
+                </span>
+              </div>
             </a>
           ))}
         </div>
