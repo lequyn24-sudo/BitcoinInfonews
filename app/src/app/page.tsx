@@ -4,11 +4,14 @@ import { Sidebar } from '@/components/layout/Sidebar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { DashboardCards } from '@/components/sections/DashboardCards';
 import { BtcPriceChart } from '@/components/sections/BtcPriceChart';
-import { BitcoinMarkets } from '@/components/sections/BitcoinMarkets';
-import { BitcoinGuides } from '@/components/sections/BitcoinGuides';
-import { BitcoinMining } from '@/components/sections/BitcoinMining';
-import { BitcoinEcosystem } from '@/components/sections/BitcoinEcosystem';
+import { HomeCategorySection } from '@/components/sections/HomeCategorySection';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import {
+  bitcoinNewsArticles,
+  altcoinNewsArticles,
+  miningArticles,
+  blockchainEventArticles,
+} from '@/lib/mock-articles';
 
 export default function Home() {
   return (
@@ -38,10 +41,50 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Left Content Column */}
             <div className="flex flex-col gap-16 lg:col-span-8">
-              <ScrollReveal variant="up"><BitcoinMarkets /></ScrollReveal>
-              <ScrollReveal variant="up" delay={1}><BitcoinGuides /></ScrollReveal>
-              <ScrollReveal variant="up" delay={1}><BitcoinMining /></ScrollReveal>
-              <ScrollReveal variant="up" delay={1}><BitcoinEcosystem /></ScrollReveal>
+              <ScrollReveal variant="up">
+                <HomeCategorySection
+                  id="bitcoin-news"
+                  eyebrow="Bitcoin News"
+                  title="Bitcoin News"
+                  description="Latest Bitcoin market coverage, ETF flows, institutional adoption, and network fundamentals."
+                  href="/bitcoin-news"
+                  articles={bitcoinNewsArticles}
+                  accentColor="#F7931A"
+                />
+              </ScrollReveal>
+              <ScrollReveal variant="up" delay={1}>
+                <HomeCategorySection
+                  id="altcoin-news"
+                  eyebrow="Alt Coin News"
+                  title="Alt Coin News"
+                  description="Ethereum, Solana, BNB, XRP and the broader altcoin ecosystem from a Bitcoin-first perspective."
+                  href="/altcoin-news"
+                  articles={altcoinNewsArticles}
+                  accentColor="#3B9EFF"
+                />
+              </ScrollReveal>
+              <ScrollReveal variant="up" delay={1}>
+                <HomeCategorySection
+                  id="mining"
+                  eyebrow="Mining"
+                  title="Mining"
+                  description="Difficulty, hashrate, miner economics, hardware cycles, and energy integration strategies."
+                  href="/mining"
+                  articles={miningArticles}
+                  accentColor="#F7931A"
+                />
+              </ScrollReveal>
+              <ScrollReveal variant="up" delay={1}>
+                <HomeCategorySection
+                  id="blockchain-events"
+                  eyebrow="Blockchain Event"
+                  title="Blockchain Event"
+                  description="Key milestones, conference coverage, regulatory decisions, and protocol events."
+                  href="/blockchain-events"
+                  articles={blockchainEventArticles}
+                  accentColor="#FFB800"
+                />
+              </ScrollReveal>
             </div>
 
             {/* Right Sidebar */}
