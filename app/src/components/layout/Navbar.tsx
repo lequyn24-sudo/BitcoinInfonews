@@ -61,7 +61,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           {/* Subscribe */}
           <Link
-            href="#newsletter"
+            href="/subscribe"
             className="hidden md:inline-flex items-center justify-center rounded-md font-semibold transition-all duration-150 hover:opacity-90"
             style={{
               height: '36px',
@@ -76,7 +76,8 @@ export function Navbar() {
           </Link>
 
           {/* Sign In */}
-          <button
+          <Link
+            href="/signin"
             className="hidden md:inline-flex items-center justify-center rounded-md font-medium transition-all duration-150 hover:bg-white/5"
             style={{
               height: '36px',
@@ -88,7 +89,7 @@ export function Navbar() {
             }}
           >
             Sign In
-          </button>
+          </Link>
 
           {/* Mobile Hamburger */}
           <button
