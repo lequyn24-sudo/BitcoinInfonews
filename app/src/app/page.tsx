@@ -21,7 +21,7 @@ export default function Home() {
 
         {/* Zone 2.5 — BTC Price Chart Section */}
         <ScrollReveal variant="up">
-          <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 py-8">
+          <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-4 pb-0">
             <BtcPriceChart />
           </div>
         </ScrollReveal>
