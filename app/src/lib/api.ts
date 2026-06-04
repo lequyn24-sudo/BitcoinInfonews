@@ -6,6 +6,7 @@ import {
   ecosystemArticle,
   Article,
 } from './mock-data';
+import { allCategoryArticles } from './mock-articles';
 
 export interface BitcoinPriceData {
   price: number;
@@ -27,6 +28,7 @@ export const allArticles: Article[] = [
   guidesArticle,
   miningArticle,
   ecosystemArticle,
+  ...allCategoryArticles,
 ];
 
 export function getAllArticles(): Article[] {

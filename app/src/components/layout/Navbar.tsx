@@ -6,11 +6,13 @@ import { List, X } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 const navLinks = [
-  { label: 'News', href: '/news' },
-  { label: 'Guides', href: '/guides' },
-  { label: 'Markets', href: '/markets' },
+  { label: 'Bitcoin News', href: '/bitcoin-news' },
+  { label: 'Alt Coin News', href: '/altcoin-news' },
   { label: 'Mining', href: '/mining' },
-  { label: 'Ecosystem', href: '/ecosystem' },
+  { label: 'Blockchain Event', href: '/blockchain-events' },
+  { label: 'Top Project', href: '/top-projects' },
+  { label: 'Other', href: '/other' },
+  { label: 'Sponsored', href: '/sponsored' },
 ];
 
 export function Navbar() {
