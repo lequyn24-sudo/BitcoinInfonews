@@ -28,7 +28,6 @@ export function HomeCategorySection({
       {/* Section Header */}
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
         <div>
-          <span className="section-eyebrow">{eyebrow}</span>
           <h2
             style={{
               fontSize: '28px',
