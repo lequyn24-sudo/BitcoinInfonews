@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { DashboardCards } from '@/components/sections/DashboardCards';
+import { BtcPriceChart } from '@/components/sections/BtcPriceChart';
 import { BitcoinMarkets } from '@/components/sections/BitcoinMarkets';
 import { BitcoinGuides } from '@/components/sections/BitcoinGuides';
 import { BitcoinMining } from '@/components/sections/BitcoinMining';
@@ -16,6 +17,11 @@ export default function Home() {
       <main>
         {/* Zone 2 — Hero Section */}
         <HeroSection />
+
+        {/* Zone 2.5 — BTC Price Chart Section */}
+        <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 py-8">
+          <BtcPriceChart />
+        </div>
 
         {/* Zone 3 — Dashboard Cards */}
         <DashboardCards />
