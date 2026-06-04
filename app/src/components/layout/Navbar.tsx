@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { List, X } from '@phosphor-icons/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const navLinks = [
   { label: 'News', href: '/#news' },
@@ -15,18 +15,6 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [priceData, setPriceData] = useState<{ price: number; change24h: number } | null>(null);
-
-  useEffect(() => {
-    fetch('/api/price')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && !data.error) {
-          setPriceData({ price: data.price, change24h: data.change24h });
-        }
-      })
-      .catch((err) => console.error('Error fetching price in Navbar:', err));
-  }, []);
 
   return (
     <nav
@@ -67,26 +55,38 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Right — BTC price + hamburger */}
-        <div className="flex items-center gap-3">
-          {/* Live Ticker */}
-          {priceData && (
-            <div
-              className="hidden items-center gap-2 font-mono text-xs md:flex rounded-md px-3 py-1.5"
-              style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.10)',
-              }}
-            >
-              <span className="text-text-secondary">BTC</span>
-              <span className="font-semibold text-white">
-                ${priceData.price.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-              </span>
-              <span className={`font-semibold ${priceData.change24h >= 0 ? 'text-green' : 'text-red'}`}>
-                {priceData.change24h >= 0 ? '+' : ''}{priceData.change24h.toFixed(2)}%
-              </span>
-            </div>
-          )}
+        {/* Right — Subscribe + Sign In + Hamburger */}
+        <div className="flex items-center gap-2">
+          {/* Subscribe */}
+          <Link
+            href="#newsletter"
+            className="hidden md:inline-flex items-center justify-center rounded-md font-semibold transition-all duration-150 hover:opacity-90"
+            style={{
+              height: '36px',
+              padding: '0 16px',
+              background: '#F7931A',
+              color: '#000000',
+              fontSize: '13px',
+              letterSpacing: '0.02em',
+            }}
+          >
+            Subscribe
+          </Link>
+
+          {/* Sign In */}
+          <button
+            className="hidden md:inline-flex items-center justify-center rounded-md font-medium transition-all duration-150 hover:bg-white/5"
+            style={{
+              height: '36px',
+              padding: '0 14px',
+              background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.15)',
+              color: '#FFFFFF',
+              fontSize: '13px',
+            }}
+          >
+            Sign In
+          </button>
 
           {/* Mobile Hamburger */}
           <button
