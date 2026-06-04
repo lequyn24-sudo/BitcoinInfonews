@@ -1,6 +1,6 @@
 'use client';
 
-import { mostReadArticles, calendarEvents } from '@/lib/mock-data';
+import { mostReadArticles, calendarEvents, pressReleases, sidebarSponsored } from '@/lib/mock-data';
 import { ArrowRight } from '@phosphor-icons/react';
 import { useState } from 'react';
 
@@ -119,6 +119,105 @@ export function Sidebar() {
         >
           View full calendar <ArrowRight size={12} />
         </a>
+      </div>
+
+      {/* Sponsored */}
+      <div className="card-base">
+        <h3
+          className="mb-3"
+          style={{
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: '#FFB800',
+          }}
+        >
+          Sponsored
+        </h3>
+        <div className="flex flex-col gap-3">
+          {sidebarSponsored.map((item, idx) => (
+            <a
+              key={idx}
+              href={item.href}
+              className="group flex flex-col gap-1 transition-colors"
+            >
+              <span
+                style={{
+                  fontSize: '9px',
+                  fontWeight: 700,
+                  letterSpacing: '0.07em',
+                  textTransform: 'uppercase',
+                  color: '#FFB800',
+                }}
+              >
+                {item.label}
+              </span>
+              <span
+                className="text-text-secondary transition-colors group-hover:text-text-primary"
+                style={{ fontSize: '13px', fontWeight: 500, lineHeight: 1.4 }}
+              >
+                {item.title}
+              </span>
+            </a>
+          ))}
+        </div>
+        <a
+          href="/sponsored"
+          className="mt-3 flex items-center gap-1 text-text-secondary transition-colors hover:text-amber"
+          style={{ fontSize: '12px' }}
+        >
+          View all sponsored <ArrowRight size={12} />
+        </a>
+      </div>
+
+      {/* Press Release */}
+      <div className="card-base">
+        <h3
+          className="mb-3"
+          style={{
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: '#3B9EFF',
+          }}
+        >
+          Press Release
+        </h3>
+        <div className="flex flex-col gap-3">
+          {pressReleases.map((pr, idx) => (
+            <a
+              key={idx}
+              href="#"
+              className="group flex flex-col gap-1 transition-colors"
+            >
+              <span
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: '#3B9EFF',
+                }}
+              >
+                {pr.company}
+              </span>
+              <span
+                className="text-text-secondary transition-colors group-hover:text-text-primary"
+                style={{ fontSize: '13px', fontWeight: 500, lineHeight: 1.4 }}
+              >
+                {pr.headline}
+              </span>
+              <span
+                className="text-text-secondary"
+                style={{ fontSize: '11px' }}
+              >
+                {pr.date}
+              </span>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Newsletter Signup */}

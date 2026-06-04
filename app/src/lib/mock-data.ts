@@ -393,6 +393,49 @@ export const mostReadArticles = [
   'Bitcoin Layer2 Activity Is Rising But Fragmentation Remains',
 ];
 
+// Sidebar - Press Releases
+export const pressReleases = [
+  {
+    company: 'Blockstream',
+    headline: 'Blockstream Jade Plus Hardware Wallet Now Available With Air-Gap Multisig',
+    date: 'Jun 1, 2025',
+  },
+  {
+    company: 'Lightning Labs',
+    headline: 'Lightning Labs Releases LND 0.18 With Improved Routing And Channel Management',
+    date: 'May 30, 2025',
+  },
+  {
+    company: 'Kraken',
+    headline: 'Kraken Launches US-Compliant Bitcoin Perpetual Contracts After Regulatory Approval',
+    date: 'May 28, 2025',
+  },
+  {
+    company: 'VanEck',
+    headline: 'VanEck Debuts Spot BNB ETF (VBNB) On Nasdaq, Expanding Crypto ETF Suite',
+    date: 'May 26, 2025',
+  },
+];
+
+// Sidebar - Sponsored (short list for sidebar)
+export const sidebarSponsored = [
+  {
+    label: 'SPONSORED',
+    title: 'Understanding Bitcoin Custody: A Guide For Institutional Investors',
+    href: '/understanding-bitcoin-custody-guide-institutional',
+  },
+  {
+    label: 'SPONSORED',
+    title: 'The Case For A 5% Bitcoin Allocation In A Traditional Portfolio',
+    href: '/5-percent-bitcoin-allocation-case',
+  },
+  {
+    label: 'SPONSORED',
+    title: 'Bitcoin Mining Economics: Post-Halving Profitability Guide',
+    href: '/bitcoin-mining-post-halving-profitability',
+  },
+];
+
 // Sidebar - Calendar
 export const calendarEvents: CalendarEvent[] = [
   { date: 'Apr 24', title: 'FOMC Meeting', color: '#00C896' },
