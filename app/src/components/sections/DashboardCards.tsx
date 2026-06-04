@@ -25,7 +25,7 @@ export function DashboardCards() {
       <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-6 pb-8">
         {/* Section Header */}
         <div
-          className="mb-4 flex items-center gap-2 border-b border-[rgba(255,255,255,0.08)] pb-3"
+          className="mb-4 flex items-center gap-2 pb-3"
         >
           <h2
             style={{
