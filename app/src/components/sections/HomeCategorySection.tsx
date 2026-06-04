@@ -1,5 +1,5 @@
 import { Article } from '@/lib/mock-data';
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight, Hash } from '@phosphor-icons/react/dist/ssr';
 import Link from 'next/link';
 
 interface HomeCategorySectionProps {
@@ -10,6 +10,45 @@ interface HomeCategorySectionProps {
   href: string;
   articles: Article[];
   accentColor?: string;
+}
+
+function TrendingTags({ articles, accentColor }: { articles: Article[]; accentColor: string }) {
+  // Count tag frequency across all articles
+  const freq: Record<string, number> = {};
+  articles.forEach((a) => a.tags.forEach((t) => { freq[t] = (freq[t] ?? 0) + 1; }));
+  const sorted = Object.entries(freq)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 12)
+    .map(([tag]) => tag);
+
+  return (
+    <div className="card-base">
+      <div className="flex items-center gap-2 mb-3">
+        <Hash size={12} style={{ color: accentColor }} />
+        <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: accentColor }}>
+          Trending Tags
+        </span>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {sorted.map((tag) => (
+          <span
+            key={tag}
+            className="cursor-pointer rounded-full transition-all duration-150 hover:border-amber/50 hover:text-amber"
+            style={{
+              fontSize: '11px',
+              fontWeight: 500,
+              padding: '4px 10px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.10)',
+              color: '#A0A0A0',
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export function HomeCategorySection({
@@ -98,7 +137,7 @@ export function HomeCategorySection({
           </Link>
         )}
 
-        {/* Related Articles */}
+        {/* Related Articles + Trending Tags */}
         <div className="flex flex-col gap-3">
           {related.slice(0, 3).map((article) => (
             <Link
@@ -129,6 +168,9 @@ export function HomeCategorySection({
               </p>
             </Link>
           ))}
+
+          {/* Trending Tags — fills remaining height */}
+          <TrendingTags articles={articles} accentColor={accentColor ?? '#F7931A'} />
         </div>
       </div>
     </section>
