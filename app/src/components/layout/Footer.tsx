@@ -71,7 +71,7 @@ export function Footer() {
             >
               Bitcoin Coverage
             </h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {catCol1.map(({ label, href }) => (
                 <Link
                   key={label}
@@ -93,7 +93,7 @@ export function Footer() {
             >
               More Sections
             </h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {catCol2.map(({ label, href }) => (
                 <Link
                   key={label}
@@ -115,7 +115,7 @@ export function Footer() {
             >
               Company
             </h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-3">
               {companyLinks.map(({ label, href }) => (
                 <Link
                   key={label}
