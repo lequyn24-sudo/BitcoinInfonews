@@ -22,7 +22,7 @@ export function DashboardCards() {
       id="dashboard"
       className="relative w-full"
     >
-      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-2 pb-8">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-6 pb-6">
         {/* Section Header */}
         <div
           className="mb-4 flex items-center gap-2 pb-3"

@@ -16,7 +16,7 @@ import Link from 'next/link';
 export function HeroSection() {
   return (
     <section id="hero" className="relative w-full hero-glow-bg">
-      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-8 pb-4 lg:pt-10 lg:pb-4">
+      <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 pt-8 pb-6 lg:pt-10 lg:pb-6">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
 
           {/* ── LEFT (4/12 ≈ 33%) — Headline + Status + Subtext + CTA ── */}
