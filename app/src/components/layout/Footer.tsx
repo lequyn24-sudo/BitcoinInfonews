@@ -20,7 +20,12 @@ const catCol2 = [
   { label: 'Press Release',     href: '#' },
 ];
 
-const companyLinks = ['About Us', 'Editorial Standards', 'Disclaimer', 'Advertise'];
+const companyLinks = [
+  { label: 'About Us',           href: '/about' },
+  { label: 'Editorial Standards', href: '/editorial' },
+  { label: 'Disclaimer',         href: '/disclaimer' },
+  { label: 'Advertise',          href: '/advertise' },
+];
 
 export function Footer() {
   return (
@@ -111,15 +116,15 @@ export function Footer() {
               Company
             </h4>
             <div className="flex flex-col gap-2.5">
-              {companyLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
+              {companyLinks.map(({ label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
                   className="text-text-secondary transition-colors hover:text-white"
                   style={{ fontSize: '13px', fontWeight: 500 }}
                 >
-                  {link}
-                </a>
+                  {label}
+                </Link>
               ))}
             </div>
 
