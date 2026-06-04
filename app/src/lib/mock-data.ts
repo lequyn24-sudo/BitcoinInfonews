@@ -47,7 +47,7 @@ export const heroArticle: Article = {
   author: 'InfoNews Editorial',
   date: 'Apr 20, 2025',
   readTime: '5 min read',
-  thumbnail: '/images/background.webp',
+  thumbnail: '/images/thumbnails/strategic-bitcoin-reserve-bill-drops-1-million-btc-target-adds-20-year-lockup-thumbnail.jpg',
   tags: ['Regulation', 'Institutional'],
   toc: [
     { id: 'introduction', text: 'Introduction' },
@@ -85,21 +85,21 @@ export const heroNewsItems = [
     category: 'BITCOIN ETF',
     categoryColor: '#F7931A',
     title: 'Morgan Stanley Spot Bitcoin ETF Distribution Push Reshapes Access',
-    thumbnail: '/images/background.webp',
+    thumbnail: '/images/thumbnails/vaneck-debuts-spot-bnb-etf-vbnb-on-nasdaq-thumbnail-768x512.jpg',
   },
   {
     id: '3',
     category: 'PRICE ANALYSIS',
     categoryColor: '#F7931A',
     title: 'Bitcoin Reclaims Key Range As Volatility Compresses Near Resistance',
-    thumbnail: '/images/background.webp',
+    thumbnail: '/images/thumbnails/kraken-us-compliant-bitcoin-perpetual-contracts-launch-30-days-thumbnail-768x512.jpg',
   },
   {
     id: '4',
     category: 'INSTITUTIONS',
     categoryColor: '#F7931A',
     title: 'Corporate Treasury Demand Keeps Bitcoin Bid Firm Into New Quarter',
-    thumbnail: '/images/background.webp',
+    thumbnail: '/images/thumbnails/vaneck-ranking-xrp-ledger-ahead-jpmorgan-kinexys-corporate-blockchain-comparison-thumbnail-2-768x512.jpg',
   },
 ];
 
@@ -185,7 +185,7 @@ export const marketsArticle: Article = {
   author: 'Market Desk',
   date: 'Apr 19, 2025',
   readTime: '7 min read',
-  thumbnail: '/images/background.webp',
+  thumbnail: '/images/thumbnails/1280X1280_1779175249LXbBvv3v8j-768x432.png',
   tags: ['On-chain', 'ETF Flow', 'Macro'],
   toc: [
     { id: 'price-consolidation', text: 'Price Consolidation' },
@@ -242,7 +242,7 @@ export const guidesArticle: Article = {
   author: 'Guides Team',
   date: 'Apr 18, 2025',
   readTime: '10 min read',
-  thumbnail: '/images/background.webp',
+  thumbnail: '/images/thumbnails/us-seizes-1-billion-in-crypto-from-iran-thumbnail-768x512.jpg',
   tags: ['Wallets', 'Security', 'Self-Custody'],
   toc: [
     { id: 'affiliate-problem', text: 'The Affiliate Site Problem' },
@@ -284,7 +284,7 @@ export const miningArticle: Article = {
   author: 'Mining Desk',
   date: 'Apr 17, 2025',
   readTime: '8 min read',
-  thumbnail: '/images/background.webp',
+  thumbnail: '/images/thumbnails/20260522-175919_1779444420kVIOzuBKeB-768x403.jpg',
   tags: ['Mining', 'Hashrate', 'Hardware'],
   toc: [
     { id: 'hashprice-compression', text: 'Hashprice Compression' },
@@ -345,7 +345,7 @@ export const ecosystemArticle: Article = {
   author: 'Ecosystem Desk',
   date: 'Apr 16, 2025',
   readTime: '6 min read',
-  thumbnail: '/images/background.webp',
+  thumbnail: '/images/thumbnails/1280X1280_17792638184yOu83FmUb-768x432.png',
   tags: ['Lightning', 'Layer2', 'Infrastructure'],
   toc: [
     { id: 'scaling-bitcoin', text: 'Scaling Bitcoin' },
