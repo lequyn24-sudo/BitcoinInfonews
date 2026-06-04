@@ -74,42 +74,6 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* Trending Tags */}
-      <div className="card-base">
-        <div className="flex items-center gap-2 mb-3">
-          <Hash size={12} color="#F7931A" />
-          <h3
-            style={{
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.06em',
-              textTransform: 'uppercase',
-              color: '#F7931A',
-            }}
-          >
-            Trending Tags
-          </h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {trendingTags.map((tag) => (
-            <span
-              key={tag}
-              className="cursor-pointer rounded-full transition-all duration-150 hover:text-amber"
-              style={{
-                fontSize: '11px',
-                fontWeight: 500,
-                padding: '4px 10px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.10)',
-                color: '#A0A0A0',
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Bitcoin Calendar Radar */}
       <div className="card-base">
         <h3
@@ -323,6 +287,27 @@ export function Sidebar() {
           >
             Subscribe.
           </button>
+        </div>
+      </div>
+
+      {/* Trending Tags — bottom */}
+      <div className="card-base">
+        <div className="flex items-center gap-2 mb-3">
+          <Hash size={12} color="#F7931A" />
+          <h3 style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#F7931A' }}>
+            Trending Tags
+          </h3>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {trendingTags.map((tag) => (
+            <span
+              key={tag}
+              className="cursor-pointer rounded-full transition-all duration-150 hover:text-amber"
+              style={{ fontSize: '11px', fontWeight: 500, padding: '4px 10px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.10)', color: '#A0A0A0' }}
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     </aside>
