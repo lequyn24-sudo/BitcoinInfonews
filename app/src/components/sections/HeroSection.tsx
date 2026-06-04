@@ -18,7 +18,7 @@ export function HeroSection() {
       <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 py-8 lg:py-10">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:items-stretch">
           {/* Left Column — Featured Article */}
-          <div className="md:col-span-6 lg:col-span-5 md:flex md:flex-col">
+          <div className="md:col-span-6 lg:col-span-4 md:flex md:flex-col">
             <Link
               href={`/${heroArticle.slug}`}
               className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-[rgba(255,255,255,0.10)] transition-all duration-200 hover:border-[rgba(247,147,26,0.45)] hover:shadow-[0_0_40px_rgba(247,147,26,0.12)] min-h-[380px] sm:min-h-[480px] md:flex-1"
@@ -87,7 +87,7 @@ export function HeroSection() {
           </div>
 
           {/* Center Column — Regime Monitor + News Items */}
-          <div className="flex flex-col gap-4 md:col-span-6 lg:col-span-4">
+          <div className="flex flex-col gap-4 md:col-span-6 lg:col-span-5">
             {/* Bitcoin Regime Monitor */}
             <div className="card-base">
               <h3
