@@ -20,7 +20,6 @@ export function CategoryPage({ eyebrow, title, description, articles, accentColo
       <main className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 py-12">
         {/* Header */}
         <div className="mb-10 reveal">
-          <span className="section-eyebrow">{eyebrow}</span>
           <h1 style={{ fontSize: '40px', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
             {title}
           </h1>
