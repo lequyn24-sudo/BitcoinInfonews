@@ -42,8 +42,8 @@ export function DashboardCards() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {dashboardCards.map((card) => (
-            <div key={card.title} className="card-base">
+          {dashboardCards.map((card, idx) => (
+            <div key={card.title} className={`card-base reveal reveal-delay-${Math.min(idx + 1, 5) as 1|2|3|4|5}`}>
               {/* Icon + Title */}
               <div className="mb-3 flex items-center gap-2">
                 <div

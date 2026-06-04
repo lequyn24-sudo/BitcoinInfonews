@@ -20,7 +20,7 @@ export function BitcoinGuides() {
   return (
     <section id="guides" className="w-full">
       {/* Section Header */}
-      <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4">
+      <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between border-b border-[rgba(255,255,255,0.08)] pb-4 reveal">
         <div>
           <span className="section-eyebrow">Guides</span>
           <h2

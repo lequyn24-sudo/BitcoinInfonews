@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { RevealInit } from '@/components/ui/RevealInit';
 
 export const metadata: Metadata = {
   title: "InfoNews. | Bitcoin-Focused News & Deep Network Fundamentals",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-void text-text-primary font-sans antialiased">
+        <RevealInit />
         {children}
       </body>
     </html>
