@@ -19,10 +19,32 @@ export function HeroSection() {
       <div className="mx-auto w-full max-w-full lg:max-w-[960px] xl:max-w-[1200px] px-4 md:px-6 lg:px-8 xl:px-0 py-8 lg:py-10">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:items-stretch">
 
-          {/* ── LEFT (4/12 ≈ 33%) — Status + Headline + CTA ── */}
+          {/* ── LEFT (4/12 ≈ 33%) — Headline + Status + Subtext + CTA ── */}
           <div className="flex flex-col justify-center gap-5 md:col-span-6 lg:col-span-4">
 
-            {/* Status Pill */}
+            {/* Category Badge + Headline */}
+            <div>
+              <span
+                className="badge mb-3 inline-block"
+                style={{ background: 'rgba(247,147,26,0.15)', color: '#F7931A' }}
+              >
+                {heroArticle.category}
+              </span>
+              <Link href={`/${heroArticle.slug}`} className="group block">
+                <h1
+                  className="text-text-primary font-extrabold group-hover:text-amber transition-colors duration-200"
+                  style={{
+                    fontSize: 'clamp(22px, 2.8vw, 34px)',
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {heroArticle.title}
+                </h1>
+              </Link>
+            </div>
+
+            {/* Status Pill — between headline and excerpt */}
             <div
               className="inline-flex w-fit items-center gap-2 rounded-full px-3 py-1.5"
               style={{
@@ -49,28 +71,6 @@ export function HeroSection() {
               <span style={{ fontSize: '11px', color: '#A0A0A0', fontFamily: 'var(--font-mono)' }}>
                 {regimeMonitor.confidence}%
               </span>
-            </div>
-
-            {/* Category Badge + Headline */}
-            <div>
-              <span
-                className="badge mb-3 inline-block"
-                style={{ background: 'rgba(247,147,26,0.15)', color: '#F7931A' }}
-              >
-                {heroArticle.category}
-              </span>
-              <Link href={`/${heroArticle.slug}`} className="group block">
-                <h1
-                  className="text-text-primary font-extrabold group-hover:text-amber transition-colors duration-200"
-                  style={{
-                    fontSize: 'clamp(22px, 2.8vw, 34px)',
-                    lineHeight: 1.15,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  {heroArticle.title}
-                </h1>
-              </Link>
             </div>
 
             {/* Excerpt */}
